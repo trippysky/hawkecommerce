@@ -1,0 +1,69 @@
+db tables:
+
+users
+products
+addresses
+catagories
+orders
+customers
+
+
+
+Pages:
+
+admin login
+add/edit product
+orders list page
+order details page
+products page
+
+Customer side:
+Product display
+product detail
+shopping cart
+
+
+Priorities:
+database
+html views
+add product
+
+Low Priorities:
+hover icon
+drag and drop
+
+
+Views:
+	adminLogin.php
+	dashOrders.php
+	allProducts.php
+	order.php	
+	editProduct.php
+
+	catagories.php
+	oneProduct.php
+	shoppingCart.php
+
+Controllers:
+	orders.php
+	products.php
+	admins.php
+	users.php
+
+Models:
+	order.php
+	product.php
+	admin.php
+	user.php
+
+
+
+Catagories:
+	Models
+	Railroad
+	R/C
+	Drones
+	Planes
+	Cars
+	Boats
+	Rockets
