@@ -12,6 +12,31 @@
 		$this->db->query($query, $values);
 		}
 
+		public function login($post)
+		{
+			// var_dump($post);
+			// die('model');
+
+			$query = "SELECT id FROM admins WHERE email = ? AND password = ?";
+			$values = array($post["email"], $post["password"]);
+			$user = $this->db->query($query,$values)->row_array();
+
+			if(!empty($user)){
+				// user found
+				$resultdata = array('id' => $user["id"]);
+				// var_dump($resultdata);
+				// die();
+				$this->session->set_userdata($resultdata);
+
+				return true;
+			}
+			else{
+				// no user found
+				$this->session->set_flashdata("errors", "<p>Invalid credentials.</p>");
+				return false;
+			}
+		}
+
 
 	}
 ?>

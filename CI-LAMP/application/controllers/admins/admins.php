@@ -18,6 +18,28 @@ class Admins extends CI_Controller {
 		$this->admin->add_user($this->input->post());
 		redirect("/admins");
 	}
+
+	public function login()
+	{		
+		$this->admin->login($this->input->post());
+
+		if($this->admin->login($this->input->post())){
+			// var_dump($this->session->userdata("id"));
+			// die('logged in');
+			// true: user found
+			redirect("/trips");
+		}
+		else{
+			// false: user not found
+			redirect("/");
+		}
+
+	}
+
+	public function logout(){
+		$this->session->sess_destroy();
+		redirect("/");
+	}
 }
 
 /* End of file welcome.php */

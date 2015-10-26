@@ -14,7 +14,7 @@
 </head>
 <body>
 	<h2>Admin Login Page</h2>
-	<form action = "/admin/login" method = "post">
+	<form action = "/admins/login" method = "post">
 		<p>
 		<input type = "text" name = "email" placeholder = "Email">
 		</p>
@@ -27,6 +27,7 @@
 	</form>
 	
 	<h2>Register</h2>
+		<?= $this->session->flashdata('errors') ?>
 	
 		<form action = "/admins/register" method = "post">
 		<p>
