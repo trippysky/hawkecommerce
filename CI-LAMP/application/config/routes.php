@@ -38,6 +38,7 @@
 |
 */
 
+$route['customer'] = "customers/customer";
 $route['customers'] = "customers/customers";
 $route['admins'] = "admins/admins";
 $route['default_controller'] = "customers/customers";

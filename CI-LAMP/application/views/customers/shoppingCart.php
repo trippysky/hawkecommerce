@@ -28,38 +28,38 @@
 					<tr>
 						<td>Ordered Item Here</td>
 						<td>Item Price Here</td>
-						<td>Quantity ordered here <a href="/">update</a> <a href="/"><button value="delete">Delete</button></a></td>
+						<td>Quantity ordered here <a href="/">update</a> <a href="/"><img src="assets/trashcan.png"/></a></td>
 						<td>$ Calculated Item Total</td>
 					</tr>
 					<tr>
 						<td>Ordered Item Here</td>
 						<td>Item Price Here</td>
-						<td>Quantity ordered here <a href="/">update</a> <a href="/"><button value="delete">Delete</button></a></td>
+						<td>Quantity ordered here <a href="/">update</a> <a href="/"><img src="assets/trashcan.png"/></a></td>
 						<td>$ Calculated Item Total</td>
 					</tr>
 					<tr>
 						<td>Ordered Item Here</td>
 						<td>Item Price Here</td>
-						<td>Quantity ordered here <a href="/">update</a> <a href="/"><button value="delete">Delete</button></a></td>
+						<td>Quantity ordered here <a href="/">update</a> <a href="/"><img src="assets/trashcan.png"/></a></td>
 						<td>$ Calculated Item Total</td>
 					</tr>
 					<tr>
 						<td>Ordered Item Here</td>
 						<td>Item Price Here</td>
-						<td>Quantity ordered here <a href="/">update</a> <a href="/"><button value="delete">Delete</button></a></td>
+						<td>Quantity ordered here <a href="/">update</a> <a href="/"><img src="assets/trashcan.png"/></a></td>
 						<td>$ Calculated Item Total</td>
 					</tr>
 					<tr>
 						<td>Ordered Item Here</td>
 						<td>Item Price Here</td>
-						<td>Quantity ordered here <a href="/">update</a> <a href="/"><button value="delete">Delete</button></a></td>
+						<td>Quantity ordered here <a href="/">update</a> <a href="/"><img src="assets/trashcan.png"/></a></td>
 						<td>$ Calculated Item Total</td>
 					</tr>
 				</tbody>
 			</table>
 			<p class="alignright">Total: $ Calculated Order Total</p>
 			<div style="clear: both;"></div>
-			<p class="alignright"><a href="/products"><button>Continue Shopping</button></a></p>
+			<p class="alignright"><a href="/products"><button class="shopping">Continue Shopping</button></a></p>
 			<div style="clear: both;"></div>
 		</div>
 		<div class="customer_info">

@@ -6,8 +6,22 @@ class Customers extends CI_Controller {
 		parent::__construct();
 		// $this->output->enable_profiler(TRUE);
 	}
+
+	public function index_html()
+	{
+		// get product data
+		$product_list = $this->customer->get_init_products();
+
+		 $this->load->view("partials/customers/products", array(
+			"product_list" => $product_list
+			));
+	}
+
 	public function index()
 	{
-		$this->load->view('customers/shoppingCart');
+		// get product data
+		$product_list = $this->customer->get_init_products();
+
+		$this->load->view('customers/categories');
 	}
 }
