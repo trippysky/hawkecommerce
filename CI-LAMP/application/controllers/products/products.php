@@ -10,7 +10,13 @@ class Products extends CI_Controller {
 	
 	public function index()
 	{
+		$results = $this->product->get_orders();
 		$this->load->view('products/dashOrders');
+	}
+
+	public function get_all_orders()
+	{
+		$this->product->get_orders();
 	}
 }
 
