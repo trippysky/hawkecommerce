@@ -14,13 +14,13 @@
 </head>
 <body>
 
-	<?php include("partials/header");?>
+	
 
 	<div>
 		<form>
 			<input type = "search" name = "search" placeholder = "Search">
 		</form>
-		<a href=""><button>Add new product</button></a>
+		<a href="/add_product"><button>Add new product</button></a>
 	</div>
 
 	<!-- Main table here -->
@@ -36,17 +36,20 @@
 			</tr>
 		</thead>
 		<tbody>
+			<?php foreach($results as $result){ ?>
+				
 			<tr>
 				<td><img src=""></td>
-				<td>(id)</td>
-				<td>(name)</td>
-				<td>(inventory)</td>
-				<td>(quantity)</td>
+				<td><?= $result['id']; ?></td>
+				<td><?= $result['name']; ?></td>
+				<td><?= $result['inventory']; ?></td>
+				<td><?= $result['qty_sold']; ?></td>
 				<td>
-					<a href="">Edit</a>
-					<a href="">Delete</a>
+					<a href="/edit_product/<?= $result['id'] ?>">Edit</a>
+					<a href="/products/delete_product">Delete</a>
 				</td>
 			</tr>
+			<?php } ?>
 		</tbody>
 	</table>
 

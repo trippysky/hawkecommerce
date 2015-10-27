@@ -16,21 +16,38 @@ class Products extends CI_Controller {
 
 	public function show_products()
 	{
-		die('here');
+
 		$results = $this->product->get_products();
+
 		$this->load->view('products/allProducts', array("results"=>$results));
+	}
+
+	public function create_product()
+	{
+		$this->product->create_product($this->input->post());
+		redirect("/show_products");
+		
 	}
 
 	public function add_product()
 	{
-		$this->product->create_product($this->input->post());
-		
+		$results = $this->product->get_categories();
+
+		$this->load->view("addProducts", array("results"=>$results));
 	}
 
-	public function edit_product()
+	public function edit_product($id)
 	{
-		$this->load->view("editProducts");
+		$results = $this->product->get_one_product($id);
+		$cat_results = $this->product->get_categories();
+		$this->load->view("products/editProduct", array("results" => $results, "cat_results" => $cat_results));
 
+	}
+
+	public function update_product()
+	{
+		var_dump($this->input->post());
+		die();
 	}
 }
 

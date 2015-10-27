@@ -37,7 +37,9 @@
 | in the URL cannot be matched to a valid route.
 |
 */
-$route['edit_product'] = "products/products/edit_product";
+$route['edit_product/(:any)'] = "products/products/edit_product/$1";
+$route['show_products'] = "products/products/show_products";
+$route['add_product'] = "products/products/add_product";
 $route['products'] = "products/products";
 $route['admins'] = "admins/admins";
 $route['default_controller'] = "products/products";

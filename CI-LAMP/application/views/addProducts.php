@@ -38,9 +38,12 @@
 </head>
 
 <body>
-<h3>Edit Product - ID </h3>
+
+	<?php //var_dump($results); die('view'); 
+	?>
+<h3>Add a New Product</h3>
 	<div class = "form_edit">
-		<form action = "/products/products/add_product" method = "post">
+		<form action = "/products/products/create_product" method = "post">
 			Name:  
 				<input type="text" name="name"></input><br>
 				Description:
@@ -50,12 +53,11 @@
 				Quantity:
 				<input type = "text" name = "qty"><br>
 			Categories: 
-				<select>
-					<option></option>
-					<option></option>
-					<option></option>
-					<option></option>
-					
+				<select name = "categories">
+					<option value = ""></option>
+					<?php foreach($results as $result){ ?>
+					<option value = "<?= $result['id'] ?>"><?= $result['name'] ?></option>
+					<?php } ?>
 				</select><br>
 			or add a new category:
 				<input type="text" name="new_category"><br>

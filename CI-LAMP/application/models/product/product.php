@@ -31,8 +31,7 @@
 						products.id, products.name, products.inventory, products.qty_sold
 						FROM products";
 						
-			var_dump( $this->db->query($query)->result_array());
-			die();
+			return $this->db->query($query)->result_array();
 			
 		}
 
@@ -41,25 +40,32 @@
 			// var_dump($post);
 			// die('model');
 
-
-			$query = "INSERT INTO products (name, description, price, inventory, created_at, updated_at) VALUES (?, ?, ?, ?, NOW(), NOW())";
-			$values = array($post['name'], $post['description'], $post['price'], $post['qty']);
-			$this->db->query($query, $values);
-			$prod_id = $this->db->insert_id();
-			
-
 			$query = "INSERT INTO categories (name, created_at, updated_at) VALUES (?, NOW(), NOW())";
 			$values = array($post['new_category']);
 			$this->db->query($query, $values);
 			$cat_id = $this->db->insert_id();
 
-			$query = "INSERT INTO product_categories (category_id, product_id, created_at, updated_at) VALUES (?, ?, NOW(), NOW())";
-			$values = "$cat_id, $prod_id";
-			$this->db->query($query,$values);
-
-
-
+			$query = "INSERT INTO products (name, description, price, inventory, category_id, created_at, updated_at) VALUES (?, ?, ?, ?, ?, NOW(), NOW())";
+			$values = array($post['name'], $post['description'], $post['price'], $post['qty'], $cat_id);
+			$this->db->query($query, $values);
 			
+		}
+
+		public function get_one_product($id)
+		{
+			
+	
+
+			$query = "SELECT products.id as product_id, products.name AS product_name, products.description, products.price, products.inventory, categories.name AS category_name, categories.id as category_id FROM products JOIN categories ON products.category_id = categories.id
+						WHERE products.id = ?";
+			$values = $id;
+			return $this->db->query($query, $values)->row_array();
+		}
+
+		public function get_categories()
+		{
+			$query = "SELECT id, name FROM categories";
+			return $this->db->query($query)->result_array();
 		}
 
 	}
