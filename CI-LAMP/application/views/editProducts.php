@@ -40,11 +40,15 @@
 <body>
 <h3>Edit Product - ID </h3>
 	<div class = "form_edit">
-		<form>
+		<form action = "/products/products/add_product" method = "post">
 			Name:  
-				<input type="text" name=""></input><br>
+				<input type="text" name="name"></input><br>
 				Description:
 				<textarea id="description" name="description"></textarea><br>
+				Price:
+				<input type = "text" name = "price"><br>
+				Quantity:
+				<input type = "text" name = "qty"><br>
 			Categories: 
 				<select>
 					<option></option>
@@ -59,7 +63,7 @@
 			<button type="button" name="Upload" onlick="">Upload</button><br>
 			<button>Cancel</button>
 			<button>Preview</button>
-			<input type="submit" name="Update"><br>
+			<input type="submit" value="Update"><br>
 		</form>
 	</div>
 

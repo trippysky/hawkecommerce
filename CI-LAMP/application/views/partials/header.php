@@ -16,8 +16,8 @@
 	<div id="header">
 		<p>Dashboard</p>
 		<p><a href=""></a>Orders</p>
-		<p><a href=""></a>Products</p>
-		<p><a href=""></a>logoff</p>
+		<p><a href="/products/show_products"></a>Products</p>
+		<p><a href="/admins/admins/logout"></a>logoff</p>
 	</div>
 	
 </body>

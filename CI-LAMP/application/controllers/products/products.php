@@ -11,12 +11,26 @@ class Products extends CI_Controller {
 	public function index()
 	{
 		$results = $this->product->get_orders();
-		$this->load->view('products/dashOrders');
+		$this->load->view('products/dashOrders', array("results"=>$results));
 	}
 
-	public function get_all_orders()
+	public function show_products()
 	{
-		$this->product->get_orders();
+		die('here');
+		$results = $this->product->get_products();
+		$this->load->view('products/allProducts', array("results"=>$results));
+	}
+
+	public function add_product()
+	{
+		$this->product->create_product($this->input->post());
+		
+	}
+
+	public function edit_product()
+	{
+		$this->load->view("editProducts");
+
 	}
 }
 

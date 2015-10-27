@@ -13,7 +13,12 @@
 	<link rel="stylesheet" type="text/css" href="/assets/style.css">
 </head>
 <body>
-<?php include("/application/views/partials/header.php");?>
+	<div id="header">
+		<p>Dashboard</p>
+		<p><a href=""></a>Orders</p>
+		<p><a href="/products/show_products">Products</a></p>
+		<p><a href="/admins/admins/logout">logoff</a></p>
+	</div>
 	
 	<form>
 		<input type = "search" name = "search" placeholder = "Search">
@@ -36,7 +41,8 @@
 				<th>Status</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody>	
+			<?php foreach($results as $result){ ?>	
 			<tr>
 				<td>(order_id)</td>
 				<td>(name)</td>
@@ -53,6 +59,7 @@
 					</form>
 				</td>
 			</tr>
+			<?php } ?>
 		</tbody>
 	</table>
 
