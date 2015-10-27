@@ -38,8 +38,9 @@
 |
 */
 
+$route['customers'] = "customers/customers";
 $route['admins'] = "admins/admins";
-$route['default_controller'] = "products";
+$route['default_controller'] = "customers/customers";
 $route['404_override'] = '';
 
 
