@@ -13,7 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="/assets/style.css">
 </head>
 <body>
-<?php include("partials/header");?>
+<?php include("/application/views/partials/header.php");?>
 	
 	<form>
 		<input type = "search" name = "search" placeholder = "Search">
