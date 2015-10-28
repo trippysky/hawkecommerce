@@ -19,8 +19,7 @@ class Customer extends CI_Model {
 		$query = "SELECT products.id, products.name, description, price, inventory, image, categories.name as category FROM products
 					JOIN categories
 					ON products.category_id = categories.id
-					ORDER BY price DESC
-					LIMIT 15";
+					ORDER BY price DESC";
 
 		return $this->db->query($query)->result_array();
 

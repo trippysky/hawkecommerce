@@ -4,8 +4,14 @@ class Customers extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->output->enable_profiler(TRUE);
+		// $this->output->enable_profiler(TRUE);
 		date_default_timezone_set('US/Pacific');
+	}
+
+	public function index()
+	{
+		$products = $this->customer->get_products();
+		$this->load->view('customers/categories', array("products" => $products));
 	}
 
 	public function category_html()
@@ -30,8 +36,7 @@ class Customers extends CI_Controller {
 		// die('index_html');
 
 		$this->load->view("partials/customers/products", array(
-			"products" => $products
-			));
+			"products" => $products));
 	}
 
 	public function product_html($products)
@@ -43,11 +48,7 @@ class Customers extends CI_Controller {
 			));
 	}
 
-	public function show_all()
-	{
-		redirect("/");
-	}
-
+	
 	public function show_product($id)
 	{
 		// get specific product data
@@ -70,11 +71,12 @@ class Customers extends CI_Controller {
 		// get product data
 		$category_list = $this->customer->get_by_category($id);
 
-		var_dump($category_list);
+		// var_dump($category_list);
+		// die('contr');
 
 		// redirect("/categories/product_html", $products);
 
-		$this->load->view('customers/categories/product_html', array(
+		$this->load->view('partials/customers/products', array(
 			"products" => $category_list
 			));
 	}
@@ -122,6 +124,8 @@ class Customers extends CI_Controller {
 		$this->session->set_userdata("items", $old_items);
 		$this->session->set_userdata("count", $old_count);
 
+		// var_dump($this->session->userdata('items'));
+		// die('cart');
 		redirect("/");
 	}
 
@@ -198,12 +202,7 @@ class Customers extends CI_Controller {
 	// {
 	// 	$this->load->view('cart');
 	// }
-
-
-
-
-	public function index()
-	{
-		$this->load->view('customers/categories');
-	}
 }
+
+?>
+

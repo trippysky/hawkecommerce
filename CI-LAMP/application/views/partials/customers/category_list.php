@@ -2,6 +2,7 @@
 <?php if(isset($categories_list) && $categories_list !== null){
 	foreach($categories_list as $category)
 { ?>
-		<a href="/products/category/<?= $category['id']; ?>"><p><?= $category['name']; ?> (<?= $category['counter']; ?>)</p></a>
+	<p class = "cat_list" id = "<?= $category['id']; ?>" action="/products/category/<?= $category['id']; ?>"><?= $category['name']; ?> (<?= $category['counter']; ?>)</p>
 <?php } } ?>
-<a href="/products/category/showall"><p class="showall">Show All</p></a>
+
+<a href="/"><p class="showall">Show All</p></a>
