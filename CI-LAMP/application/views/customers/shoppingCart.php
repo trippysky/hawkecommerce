@@ -10,7 +10,14 @@
 		<!-- this will become a partial -->
 		<div id="navbar" class="navbar">
 			<h2 class="alignleft">Hawk eCommerce</h2>
-			<p class="alignright">Shopping Cart (Count will go here)</p>
+			<p class="alignright">Shopping Cart (
+					<?php if($this->session->userdata('count') == 0)
+					{ ?>
+						empty
+					<?php } else { ?>
+						<?= $this->session->userdata('count'); ?>
+						<?php }?>
+						)</p>
 		</div>
 		<div style="clear: both;"></div>
 		<div class="order">
@@ -28,20 +35,46 @@
 					<tr>
 						<td>Ordered Item Here</td>
 						<td>Item Price Here</td>
-						<td>Quantity ordered here <a href="/">update</a> <a href="/"><button value="delete">Delete</button></a></td>
+						<td>Quantity ordered here <a href="/">update</a> <a href="/"><i class="fa fa-trash-o"></i></a></td>
+						<td>$ Calculated Item Total</td>
+					</tr>
+					<tr>
+						<td>Ordered Item Here</td>
+						<td>Item Price Here</td>
+						<td>Quantity ordered here <a href="/">update</a> <a href="/"><i class="fa fa-trash-o"></i></a></td>
+						<td>$ Calculated Item Total</td>
+					</tr>
+					<tr>
+						<td>Ordered Item Here</td>
+						<td>Item Price Here</td>
+						<td>Quantity ordered here <a href="/">update</a> <a href="/"><i class="fa fa-trash-o"></i></a></td>
+						<td>$ Calculated Item Total</td>
+					</tr>
+					<tr>
+						<td>Ordered Item Here</td>
+						<td>Item Price Here</td>
+						<td>Quantity ordered here <a href="/">update</a> <a href="/"><i class="fa fa-trash-o"></i></a></td>
+						<td>$ Calculated Item Total</td>
+					</tr>
+					<tr>
+						<td>Ordered Item Here</td>
+						<td>Item Price Here</td>
+						<td>Quantity ordered here <a href="/">update</a> <a href="/"><i class="fa fa-trash-o"></i></a></td>
 						<td>$ Calculated Item Total</td>
 					</tr>
 				</tbody>
 			</table>
 			<p class="alignright">Total: $ Calculated Order Total</p>
-			<a href="/products"><button>Continue Shopping</button></a>
+			<div style="clear: both;"></div>
+			<p class="alignright"><a href="/products"><button class="shopping">Continue Shopping</button></a></p>
+			<div style="clear: both;"></div>
 		</div>
 		<div class="customer_info">
 			<div class="shipping">
-				<h4>Shipping Information</h4>
+				<h3>Shipping Information</h3>
 				<form action="/order/create" method="post">
 					<p>
-						<label>First Name:</label>
+						<label class="space">First Name:</label>
 						<input type="text" name="first_name"/>
 					</p>
 					<p>
@@ -71,7 +104,7 @@
 				</form>
 			</div>
 			<div class="billing">
-				<h4>Billing Information</h4>
+				<h3>Billing Information</h3>
 				<form action="/order/create" method="post">
 					<input type="checkbox" name="sameas"/> Same as Shipping
 					<p>
@@ -102,7 +135,24 @@
 						<label>Zipcode:</label>
 						<input type="text" name="zipcode"/>
 					</p>
+					<p class="ccn_info">
+						<label>Card:</label>
+						<input type="text" name="ccn"/>
+					</p>
+					<p>
+						<label>Security Code:</label>
+						<input type="text" name="sec_code"/>
+					</p>
+					<p>
+						<label>Expiration:</label>
+						<input type="text" name="expiration"/>
+					</p>
+					<p>
+						<label></label>
+						<input type="submit" value="Pay" class="alignright"/>
+					</p>
 				</form>
+				<div style="clear:both"></div>
 			</div>
 		</div>
 	</div>
