@@ -10,29 +10,24 @@
 		$(document).ready(function(){
 			$('#checkbox').change(function(){
 				if($('#checkbox').is(':checked'))
-					{
-						//populate the billing address from the shipping address
-						console.log('same as shipping');
-
-						
-
-// 	bfirst_name
-// blast_name
-// baddress
-// baddress2
-// bcity
-// bstate
-// bzipcode		
-
-
-// first_name
-// last_name
-// address
-// address2
-// city
-// state
-// zipcode			
-					};
+				{
+					//populate the billing address from the shipping address
+					console.log('same as shipping');
+					$temp = $('input:text[name="first_name"]').val();
+					$('input:text[name="bfirst_name"]').attr("value", $temp);
+					$temp = $('input:text[name="last_name"]').val();
+					$('input:text[name="blast_name"]').attr("value", $temp);
+					$temp = $('input:text[name="address"]').val();
+					$('input:text[name="baddress"]').attr("value", $temp);
+					$temp = $('input:text[name="address2"]').val();
+					$('input:text[name="baddress2"]').attr("value", $temp);
+					$temp = $('input:text[name="city"]').val();
+					$('input:text[name="bcity"]').attr("value", $temp);
+					$temp = $('input:text[name="state"]').val();
+					$('input:text[name="bstate"]').attr("value", $temp);
+					$temp = $('input:text[name="zipcode"]').val();
+					$('input:text[name="bzipcode"]').attr("value", $temp);
+				};
 			});
 		});
 	</script>
@@ -90,6 +85,10 @@
 				<h3>Shipping Information</h3>
 				<form action="/order/create" method="post">
 					<p>
+						<label class="space">Email:</label>
+						<input type="text" name="email"/>
+					</p>
+					<p>
 						<label class="space">First Name:</label>
 						<input type="text" name="first_name"/>
 					</p>
@@ -119,8 +118,8 @@
 					</p>
 <!-- 				</form>
 			</div>
-			<div class="billing">
- -->				<h3>Billing Information</h3>
+			<div class="billing"> -->
+ 				<h3>Billing Information</h3>
 				<!-- <form action="/order/create" method="post"> -->
 					<input type="checkbox" name="sameas" id="checkbox"/> Same as Shipping
 					<p>
@@ -161,7 +160,7 @@
 					</p>
 					<p>
 						<label>Expiration:</label>
-						<input type="text" name="expiration"/>
+						<input type="number" name="expiration_month" min="01" max="12"/> / <input type="number" name="expiration_year" min="2010" max="2020"/>
 					</p>
 					<p>
 						<label></label>
