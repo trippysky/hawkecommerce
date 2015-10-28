@@ -15,7 +15,7 @@
 				});
 
 				$.get('/customers/customers/category_html', function(output){
-					$('#categories').html(output);
+					$('#categories').html(output);	
 				});
 
 				$(document).on('click', '.cat_list', function()
@@ -25,7 +25,7 @@
 						$(this).attr('action'),
 						$(this).serialize(),
 						$.get('/customers/customers/get_category_list/' + $(this).attr('id'), function(output) {
-								console.log('here');
+								
 								$('#product').html(output);							
 							})
 						)
