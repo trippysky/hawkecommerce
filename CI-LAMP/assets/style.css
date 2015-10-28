@@ -281,6 +281,12 @@
 		margin: 5px;
 		padding: 5px;
 	}
+	.customer_info form input[type="number"]{
+		margin: 5px;
+		padding: 5px;
+		width: 63px;
+	}
+
 	.customer_info form input[type="checkbox"]{
 		margin-top: 10px;
 	}

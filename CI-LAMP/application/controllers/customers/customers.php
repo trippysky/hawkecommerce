@@ -194,13 +194,29 @@ class Customers extends CI_Controller {
 			));
 	}
 
-	// public function show()
-	// {
-	// 	$this->load->view('cart');
-	// }
+	public function create()
+	{
+		// var_dump($this->input->post());
+		// var_dump($this->session->userdata['items']);
+		// die('create');
+		$cust_id = null;
+		$current_customer = $this->customer->current_customer($this->input->post());
 
+		if(!empty($current_customer))
+		{
+			// get customer id
 
+			// then call create_order
+		}
+		else
+		{
+			$this->customer->create_order($this->input->post(), $cust_id);
+			// clear the session
+			$this->session->sess_destroy();
+			redirect("/");
 
+		}
+	}
 
 	public function index()
 	{
