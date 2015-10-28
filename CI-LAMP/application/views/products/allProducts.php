@@ -46,7 +46,7 @@
 				<td><?= $result['qty_sold']; ?></td>
 				<td>
 					<a href="/edit_product/<?= $result['id'] ?>">Edit</a>
-					<a href="/products/delete_product">Delete</a>
+					<a href="/delete_product/<?= $result['id'] ?>">Delete</a>
 				</td>
 			</tr>
 			<?php } ?>

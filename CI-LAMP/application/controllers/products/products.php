@@ -46,8 +46,15 @@ class Products extends CI_Controller {
 
 	public function update_product()
 	{
-		var_dump($this->input->post());
-		die();
+		$this->product->update_product($this->input->post());
+		redirect("/show_products");
+	}
+
+	public function delete_product($id)
+	{
+		$this->product->delete_product($id);
+		redirect("/show_products");
+
 	}
 }
 

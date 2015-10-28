@@ -63,10 +63,11 @@
 				<input type="text" name="new_category"><br>
 			Images:
 			<button type="button" name="Upload" onlick="">Upload</button><br>
-			<button>Cancel</button>
-			<button>Preview</button>
-			<input type="submit" value="Update"><br>
+			
+			<input type="submit" value="Add"><br>
 		</form>
+		<a href="/show_products"><button>Cancel</button></a>
+		<button>Preview</button>
 	</div>
 
 </body>
