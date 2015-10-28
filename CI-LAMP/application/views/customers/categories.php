@@ -11,6 +11,7 @@
 			$(document).ready(function(){
 				$.get('/customers/customers/index_html', function(output) {
 					$('#product').html(output);
+					console.log(output);
 				});
 
 				$.get('/customers/customers/category_html', function(output){
@@ -23,14 +24,14 @@
 		<div class="container">
 			<div id="navbar" class="navbar">
 				<h2 class="alignleft">Hawk eCommerce</h2>
-				<p class="alignright">Shopping Cart (
+				<p class="alignright"><a href="/cart">Shopping Cart (
 					<?php if($this->session->userdata('count') == 0)
 					{ ?>
 						empty
 					<?php } else { ?>
 						<?= $this->session->userdata('count'); ?>
 						<?php }?>
-						)</p>
+						)</a></p>
 			</div>
 			<div style="clear: both;"></div>
 			<div class="leftnav">

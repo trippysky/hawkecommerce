@@ -4,7 +4,7 @@ class Customers extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		// $this->output->enable_profiler(TRUE);
+		$this->output->enable_profiler(TRUE);
 		date_default_timezone_set('US/Pacific');
 	}
 
@@ -25,6 +25,9 @@ class Customers extends CI_Controller {
 	{
 		// get product data
 		$products = $this->customer->get_products();
+
+		// var_dump($products);
+		// die('index_html');
 
 		$this->load->view("partials/customers/products", array(
 			"products" => $products
@@ -80,7 +83,125 @@ class Customers extends CI_Controller {
 	{
 		$this->load->view('customers/shoppingCart.php');
 	}
+
 	
+	public function buy()
+	{
+		if(!isset($this->session->userdata['items']))
+		{
+			$count = 0;
+			$this->session->set_userdata("items", array());
+		}
+		// purchase item(s)
+		$product_info = $this->customer->get_product($this->input->post('id'));
+
+		$id = $this->input->post('id');
+		$qty = $this->input->post('quantity');
+		$prod_price = $product_info['price'];
+		$name = $product_info['name'];
+
+		$price = $prod_price * $qty;
+
+		// cart items count
+		$count++;
+
+		$item = array(
+			"id" => $id,
+			"qty" => $qty,
+			"name" => $name,
+			"price" => $price
+			);
+
+		$old_count = $this->session->userdata('count');
+		$old_count += $count;
+
+		$old_items = $this->session->userdata('items');
+		$old_items[] = $item;
+
+
+		$this->session->set_userdata("items", $old_items);
+		$this->session->set_userdata("count", $old_count);
+
+		redirect("/");
+	}
+
+	public function update()
+	{
+
+		// not sure where this should go just yet
+		if(!isset($this->session->userdata['items']))
+		{
+			$count = 0;
+			$this->session->set_userdata("items", array());
+		}
+		// purchase item(s)
+		$product_info = $this->customer->get_product($this->input->post('id'));
+
+		$id = $this->input->post('id');
+		$qty = $this->input->post('quantity');
+		$prod_price = $product_info['price'];
+		$name = $product_info['name'];
+
+		$price = $prod_price * $qty;
+
+		// cart items count
+		$count++;
+
+		$item = array(
+			"id" => $id,
+			"qty" => $qty,
+			"name" => $name,
+			"price" => $price
+			);
+
+		$old_count = $this->session->userdata('count');
+		$old_count += $count;
+
+		$old_items = $this->session->userdata('items');
+		$old_items[] = $item;
+
+
+		$this->session->set_userdata("items", $old_items);
+		$this->session->set_userdata("count", $old_count);
+
+		redirect("/");
+	}
+
+	public function destroy($id)
+	{
+
+		$items = $this->session->userdata['items'];
+
+		var_dump($this->session->userdata['count']);
+
+		foreach($items as $key => $item)
+		{
+			if($item['id'] == $id){
+				echo "found id " . $id . " in key " . $key;
+				unset($this->session->userdata['items'][$key]);
+				$new_count = $this->session->userdata["count"];
+				$new_count--;
+
+			}
+		}
+		$this->session->set_userdata('count', $new_count);
+		$new_items = $this->session->userdata['items'];
+		$this->session->set_userdata('items', $new_items);
+		var_dump($this->session->userdata['count']);
+
+		$this->load->view('cart', array(
+			$this->session->userdata['items']
+			));
+	}
+
+	// public function show()
+	// {
+	// 	$this->load->view('cart');
+	// }
+
+
+
+
 	public function index()
 	{
 		$this->load->view('customers/categories');

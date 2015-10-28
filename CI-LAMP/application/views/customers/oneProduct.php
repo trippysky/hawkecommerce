@@ -18,14 +18,14 @@
 			<!-- this will become a partial -->
 			<div id="navbar" class="navbar">
 				<h2 class="alignleft">Hawk eCommerce</h2>
-				<p class="alignright"><a href="/carts">Shopping Cart (
+				<p class="alignright"><a href="/cart">Shopping Cart (
 						<?php if($this->session->userdata('count') == 0)
 						{ ?>
 							empty
 						<?php } else { ?>
 							<?= $this->session->userdata('count'); ?>
 							<?php }?>
-							)</p></a>
+							)</a></p>
 			</div>
 			<div style="clear: both;"></div>
 			<div class="leftheader">
@@ -44,17 +44,17 @@
 			</div>
 			<div class="description">
 				<p><?= $product['name']; ?></p>
-				<form action="/" method="post">
+				<form action="/buy" method="post">
 					<!-- set the value with ajax and calculate -->
 					<select id="qty" name="quantity">
-						<?php $qty_price = 1 * $product['price'] ?>
+						<?php $qty_price = number_format(1 * $product['price'],2) ?>
 						<option value="1">1 (<?= $qty_price; ?>)</option>
-						<?php $qty_price = 2 * $product['price'] ?>
+						<?php $qty_price = number_format(2 * $product['price'],2) ?>
 						<option value="2">2 (<?= $qty_price; ?>)</option>
-						<?php $qty_price = 3 * $product['price'] ?>
+						<?php $qty_price = number_format(3 * $product['price'],2) ?>
 						<option value="3">3 (<?= $qty_price; ?>)</option>
 					</select>
-					<!-- <input type="number" name="quantity" min="1" max="5" value="1"/> -->
+					<input type="hidden" name="id" value="<?= $product['id'] ?>"/>
 					<input type="submit" value="Buy"/>
 				</form>
 			</div>

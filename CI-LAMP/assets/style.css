@@ -182,7 +182,7 @@
 }
 .description form select{
 	padding: 5px;
-	margin-left: 465px;
+	margin-left: 450px;
 	margin-top: -27px;
 }
 .description form input[type="submit"]{
@@ -225,13 +225,13 @@
 		outline: 1px solid rgb(128,128,128);
 	}
 	.order table td:nth-child(1){
-		width: 15%;
+		width: 40%;
 	}
 	.order table td:nth-child(2){
 		width: 15%;
 	}
 	.order table td:nth-child(3){
-		width: 40%;
+		width: 15%;
 	}
 	.order table td:nth-child(4){
 		width: 20%;
