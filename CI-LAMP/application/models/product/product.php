@@ -26,7 +26,7 @@
 		public function get_products()
 		{
 			
-
+			
 			$query = "SELECT 
 						products.id, products.name, products.inventory, products.qty_sold, products.active
 						FROM products";
