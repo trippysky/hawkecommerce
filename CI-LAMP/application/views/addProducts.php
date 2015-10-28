@@ -2,39 +2,21 @@
 <html>
 <head>
 	<title></title>
-	<style type="text/css">
-		*{
-			margin: 0px auto;
-		}
-		form{
-			text-align: left;
-			border: 1px;
-			border-width: 100px;
-			border-height: 100px;
-			margin: 10px;
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+    	$(document).ready(function()
+    	{
 
-		}
+    	});
+    </script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 
-		body{
 
-			border: 2px solid;
-			width:1000px;
-			height:900px;
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
 
-		}
-		h3{
-			margin:10px;
-		}
-		select{
-			width: 120px;
-		}
-		textarea{
-			height:200px;
-		}
-		input {
-			width:200px;
-		}
-	</style>
+
 </head>
 
 <body>

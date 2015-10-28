@@ -1,32 +1,23 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title></title>
-	</head>
-	<style type="text/css">
-		.orderInfo{
-			margin: 20px;
-		}
-		.customerBillingInfo table, th{
-			margin: 20px;
-			border: 1px black solid;
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+    	$(document).ready(function()
+    	{
 
-		}	
-		.totalBilling {
-			border: 1px black solid;
-			width: 150px;
-			height: 50px;
-			padding: 10px;
-			margin: 10px;
-		}
-		.status{
-			border: 2px black solid;
-			width: 140px;
-			height: 20px;
-			padding: 5px;
+    	});
+    </script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 
-		}					
-	</style>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+
+
+</head>
 <body>
 	<div class="orderInfo">
 		<h5>Order ID:</h5>
