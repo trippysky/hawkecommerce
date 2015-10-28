@@ -14,13 +14,49 @@ class Customer extends CI_Model {
 	// 	$this->load->view('customers/categories');
 	// }
 
-	public function get_init_products()
+	public function get_products()
 	{
 		$query = "SELECT products.id, products.name, description, price, inventory, image, categories.name as category FROM products
-					JOIN product_categories
-					ON products.id = product_categories.product_id
 					JOIN categories
-					ON product_categories.category_id = categories.id";
+					ON products.category_id = categories.id
+					LIMIT 15";
+
+		return $this->db->query($query)->result_array();
+
+	}
+
+	public function get_product($id)
+	{
+		$query = "SELECT products.id, products.name, description, price, inventory, image, categories.name as category FROM products
+					JOIN categories
+					ON products.category_id = categories.id
+					WHERE products.id = ?";
+		$values = $id;
+
+		return $this->db->query($query, $values)->row_array();
+
+	}
+	public function get_by_category($id)
+	{
+		$query = "SELECT products.id, products.name, description, price, inventory, image, categories.name as category FROM products
+					JOIN categories
+					ON products.category_id = categories.id 
+					WHERE products.category_id = ?
+					LIMIT 15";
+		$values = $id;
+
+		return $this->db->query($query, $values)->result_array();
+
+	}
+
+
+	public function get_categories()
+	{
+		$query = "SELECT categories.id, categories.name, count(*) as counter FROM categories
+					JOIN products
+					ON categories.id = products.category_id
+					GROUP BY name
+					ORDER BY counter DESC";
 
 		return $this->db->query($query)->result_array();
 

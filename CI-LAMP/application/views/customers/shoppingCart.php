@@ -10,7 +10,14 @@
 		<!-- this will become a partial -->
 		<div id="navbar" class="navbar">
 			<h2 class="alignleft">Hawk eCommerce</h2>
-			<p class="alignright">Shopping Cart (Count will go here)</p>
+			<p class="alignright">Shopping Cart (
+					<?php if($this->session->userdata('count') == 0)
+					{ ?>
+						empty
+					<?php } else { ?>
+						<?= $this->session->userdata('count'); ?>
+						<?php }?>
+						)</p>
 		</div>
 		<div style="clear: both;"></div>
 		<div class="order">
@@ -28,31 +35,31 @@
 					<tr>
 						<td>Ordered Item Here</td>
 						<td>Item Price Here</td>
-						<td>Quantity ordered here <a href="/">update</a> <a href="/"><img src="assets/trashcan.png"/></a></td>
+						<td>Quantity ordered here <a href="/">update</a> <a href="/"><i class="fa fa-trash-o"></i></a></td>
 						<td>$ Calculated Item Total</td>
 					</tr>
 					<tr>
 						<td>Ordered Item Here</td>
 						<td>Item Price Here</td>
-						<td>Quantity ordered here <a href="/">update</a> <a href="/"><img src="assets/trashcan.png"/></a></td>
+						<td>Quantity ordered here <a href="/">update</a> <a href="/"><i class="fa fa-trash-o"></i></a></td>
 						<td>$ Calculated Item Total</td>
 					</tr>
 					<tr>
 						<td>Ordered Item Here</td>
 						<td>Item Price Here</td>
-						<td>Quantity ordered here <a href="/">update</a> <a href="/"><img src="assets/trashcan.png"/></a></td>
+						<td>Quantity ordered here <a href="/">update</a> <a href="/"><i class="fa fa-trash-o"></i></a></td>
 						<td>$ Calculated Item Total</td>
 					</tr>
 					<tr>
 						<td>Ordered Item Here</td>
 						<td>Item Price Here</td>
-						<td>Quantity ordered here <a href="/">update</a> <a href="/"><img src="assets/trashcan.png"/></a></td>
+						<td>Quantity ordered here <a href="/">update</a> <a href="/"><i class="fa fa-trash-o"></i></a></td>
 						<td>$ Calculated Item Total</td>
 					</tr>
 					<tr>
 						<td>Ordered Item Here</td>
 						<td>Item Price Here</td>
-						<td>Quantity ordered here <a href="/">update</a> <a href="/"><img src="assets/trashcan.png"/></a></td>
+						<td>Quantity ordered here <a href="/">update</a> <a href="/"><i class="fa fa-trash-o"></i></a></td>
 						<td>$ Calculated Item Total</td>
 					</tr>
 				</tbody>

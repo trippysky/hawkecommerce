@@ -37,6 +37,11 @@
 | in the URL cannot be matched to a valid route.
 |
 */
+$route['products/category/showall'] = "customers/customers/show_all";
+$route['products/show/(:any)'] = "customers/customers/show_product/$1";
+$route['products/category/(:any)'] = "customers/customers/get_category_list/$1";
+
+
 $route['customers'] = "customers/customers";
 $route['products'] = "products/products";
 $route['admins'] = "admins/admins";
