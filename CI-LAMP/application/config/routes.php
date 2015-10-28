@@ -37,15 +37,17 @@
 | in the URL cannot be matched to a valid route.
 |
 */
-
+$route['delete/(:any)'] = "customers/customers/destroy/$1";
+$route['order/create'] = "customers/customers/create";
+$route['buy'] = "customers/customers/buy";
+$route['cart'] = "customers/customers/cart";
+$route['products/category/showall'] = "customers/customers/show_all";
+$route['products/show/(:any)'] = "customers/customers/show_product/$1";
+$route['products/category/(:any)'] = "customers/customers/get_category_list/$1";
 $route['edit_product/(:any)'] = "products/products/edit_product/$1";
 $route['delete_product/(:any)'] = "products/products/delete_product/$1";
 $route['show_products'] = "products/products/show_products";
 $route['add_product'] = "products/products/add_product";
-// $route['products/category/showall'] = "customers/customers/show_all";
-// $route['products/show/(:any)'] = "customers/customers/show_product/$1";
-// $route['products/category/(:any)'] = "customers/customers/get_category_list/$1";
-// $route['customers'] = "customers/customers";
 $route['products'] = "products/products";
 $route['admins'] = "admins/admins";
 $route['default_controller'] = "products/products";

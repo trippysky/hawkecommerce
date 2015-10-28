@@ -1,5 +1,5 @@
-<?php if(isset($product_list) && $product_list !== null){
-	foreach($product_list as $product)
+<?php if(isset($products) && $products !== null){
+	foreach($products as $product)
 { ?>
 <div class="product">
 	<div class="image">

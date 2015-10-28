@@ -19,6 +19,11 @@
 	color: rgb(255,255,255);
 	padding: 0px 15px;
 }
+.navbar a{
+	text-decoration: none;
+	color: inherit;
+}
+
 .alignleft{
 	float: left;
 }
@@ -73,7 +78,7 @@
 	height: 540px;
 }
 
-.products .images .product .image{
+.products .images .product .image, .similarItems .product .image{
 	position: relative;
 	float: left;
 	clear: none;
@@ -85,12 +90,12 @@
 	vertical-align: top;
 }
 
-.products .images .product .image img{
+.products .images .product .image img, .similarItems .product .image img{
 	position: relative;
 	z-index: 1;
 }
 
-.products .images .image p#price{
+.products .images .image p#price, .similarItems .image p#price{
 	display: block;
 	position: absolute;
 	width: 100%;
@@ -101,14 +106,14 @@
 	background-color: rgb(230,230,230);
 }
 
-.products .images .product{
+.products .images .product, .similarItems .product{
 	height: 175px;
 	width: 145px;
 	display: inline-block;
 	vertical-align: top;
 }
 
-.products .images .product p#name{
+.products .images .product p#name, .similarItems .product p#name{
 	text-align: center;
 }
 
@@ -169,17 +174,25 @@
 	width: 635px;
 	min-height: 350px;
 }
-
+.purchase_form{
+	outline: 1px solid red;
+}
 .description form{
 	margin-top: 15px;
 }
-.description form input{
+.description form select{
 	padding: 5px;
-	margin-right: 75px;
+	margin-left: 450px;
+	margin-top: -27px;
 }
 .description form input[type="submit"]{
 	padding: 5px;
+	margin-left: 25px;
 	margin-right: 25px;
+	margin-top: -28px;
+	background-color: rgb(43,120,228);
+	color: rgb(255,255,255);
+	font-weight: bold;
 	float: right;
 	clear: both;
 }
@@ -187,6 +200,7 @@
 .similarItems{
 	outline: 1px solid rgb(0,0,0);
 	width: 875px;
+	min-height: 200px;
 	margin: 20px auto;
 }
 .similarItems .item{
@@ -211,13 +225,13 @@
 		outline: 1px solid rgb(128,128,128);
 	}
 	.order table td:nth-child(1){
-		width: 15%;
+		width: 40%;
 	}
 	.order table td:nth-child(2){
 		width: 15%;
 	}
 	.order table td:nth-child(3){
-		width: 40%;
+		width: 15%;
 	}
 	.order table td:nth-child(4){
 		width: 20%;

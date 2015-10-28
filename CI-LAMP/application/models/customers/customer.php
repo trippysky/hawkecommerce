@@ -19,6 +19,7 @@ class Customer extends CI_Model {
 		$query = "SELECT products.id, products.name, description, price, inventory, image, categories.name as category FROM products
 					JOIN categories
 					ON products.category_id = categories.id
+					ORDER BY price DESC
 					LIMIT 15";
 
 		return $this->db->query($query)->result_array();
@@ -27,7 +28,7 @@ class Customer extends CI_Model {
 
 	public function get_product($id)
 	{
-		$query = "SELECT products.id, products.name, description, price, inventory, image, categories.name as category FROM products
+		$query = "SELECT products.id, products.name, description, price, inventory, image, categories.name as category, categories.id as categories_id FROM products
 					JOIN categories
 					ON products.category_id = categories.id
 					WHERE products.id = ?";
@@ -49,6 +50,17 @@ class Customer extends CI_Model {
 
 	}
 
+	public function get_similar($id, $cat_id)
+	{
+		$query = "SELECT products.id, products.name, description, price, inventory, image, categories.name as category FROM products
+					JOIN categories
+					ON products.category_id = categories.id
+					WHERE categories.id = ? AND products.id != ?
+					LIMIT 6";
+		$values = array($cat_id, $id);
+
+		return $this->db->query($query, $values)->result_array();
+	}
 
 	public function get_categories()
 	{
