@@ -41,7 +41,6 @@ $route['delete/(:any)'] = "customers/customers/destroy/$1";
 $route['order/create'] = "customers/customers/create";
 $route['buy'] = "customers/customers/buy";
 $route['cart'] = "customers/customers/cart";
-$route['products/category/showall'] = "customers/customers/show_all";
 $route['products/show/(:any)'] = "customers/customers/show_product/$1";
 $route['products/category/(:any)'] = "customers/customers/get_category_list/$1";
 $route['edit_product/(:any)'] = "products/products/edit_product/$1";

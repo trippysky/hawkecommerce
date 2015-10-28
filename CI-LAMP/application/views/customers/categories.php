@@ -11,11 +11,26 @@
 			$(document).ready(function(){
 				$.get('/customers/customers/index_html', function(output) {
 					$('#product').html(output);
-					console.log(output);
+					// console.log(output);					
 				});
 
 				$.get('/customers/customers/category_html', function(output){
 					$('#categories').html(output);
+				});
+
+				$(document).on('click', '.cat_list', function()
+				{
+					
+					$.post(
+						$(this).attr('action'),
+						$(this).serialize(),
+						$.get('/customers/customers/get_category_list/' + $(this).attr('id'), function(output) {
+								console.log('here');
+								$('#product').html(output);							
+							})
+						)
+					 					
+					
 				});
 			});
 		</script>
@@ -68,7 +83,16 @@
 						<!-- partials/customers/products.php outputs here -->
 				</div>
 				<div class="footernav">
-					<p>Some AJAX will go here to display page navigation</p>
+					<p><?php 
+
+					$pages = (round(count($products)/15));
+					for($i = 1 ; $i <= $pages; $i++)
+					{
+						echo "<a href = ''>".$i."</a> |";
+					}
+
+					?>
+					</p>
 				</div>
 			</div>
 		</div>
