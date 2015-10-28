@@ -24,10 +24,19 @@ class Customers extends CI_Controller {
 	public function index_html()
 	{
 		// get product data
-		$product_list = $this->customer->get_products();
+		$products = $this->customer->get_products();
 
-		 $this->load->view("partials/customers/products", array(
-			"product_list" => $product_list
+		$this->load->view("partials/customers/products", array(
+			"products" => $products
+			));
+	}
+
+	public function product_html($products)
+	{
+		// get product data
+
+		$this->load->view("partials/customers/products", array(
+			"products" => $products
 			));
 	}
 
@@ -38,10 +47,18 @@ class Customers extends CI_Controller {
 
 	public function show_product($id)
 	{
+		// get specific product data
 		$product = $this->customer->get_product($id);
 
+		// get category id from the product
+		$cat_id = $product['categories_id'];
+
+		// get similar product data
+		$similar_products = $this->customer->get_similar($id, $cat_id);
+
 		$this->load->view("customers/oneProduct", array(
-			"product" => $product
+			"product" => $product,
+			"similar_products" => $similar_products
 			));
 	}
 
@@ -52,18 +69,20 @@ class Customers extends CI_Controller {
 
 		var_dump($category_list);
 
-		$this->load->view('customers/categories', array(
-			"product_list" => $category_list
+		// redirect("/categories/product_html", $products);
+
+		$this->load->view('customers/categories/product_html', array(
+			"products" => $category_list
 			));
 	}
 
+	public function cart()
+	{
+		$this->load->view('customers/shoppingCart.php');
+	}
+	
 	public function index()
 	{
-		// get product data
-		$product_list = $this->customer->get_products();
-
-		$this->load->view('customers/categories', array(
-			"product_list" => $product_list
-			));
+		$this->load->view('customers/categories');
 	}
 }
