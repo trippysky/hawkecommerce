@@ -15,8 +15,8 @@ class Products extends CI_Controller {
 		// 	redirect("/admins");
 		// }
 		
-		$results = $this->order->get_orders();
-		$this->load->view('orders/dashOrders', array("results"=>$results));
+		$results = $this->product->get_products();
+		$this->load->view('products/allProducts', array("results"=>$results));
 	}
 
 	public function show_products()
