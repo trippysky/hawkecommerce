@@ -4,14 +4,18 @@ class Customers extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		// $this->output->enable_profiler(TRUE);
+		$this->output->enable_profiler(TRUE);
 		date_default_timezone_set('US/Pacific');
 	}
 
 	public function index()
 	{
+		// $this->session->sess_destroy();
+
 		$products = $this->customer->get_products();
-		$this->load->view('customers/categories', array("products" => $products));
+		$this->load->view('customers/categories', array(
+			"products" => $products
+			));
 	}
 
 	public function category_html()
@@ -104,6 +108,8 @@ class Customers extends CI_Controller {
 
 		$price = $prod_price * $qty;
 
+		$this->session->set_userdata("message", $name . ' added to the cart!');
+
 		// cart items count
 		$count++;
 
@@ -124,6 +130,7 @@ class Customers extends CI_Controller {
 		$this->session->set_userdata("items", $old_items);
 		$this->session->set_userdata("count", $old_count);
 
+
 		// var_dump($this->session->userdata('items'));
 		// die('cart');
 		redirect("/");
@@ -132,12 +139,8 @@ class Customers extends CI_Controller {
 	public function update()
 	{
 
-		// not sure where this should go just yet
-		if(!isset($this->session->userdata['items']))
-		{
-			$count = 0;
-			$this->session->set_userdata("items", array());
-		}
+		$items = $this->session->userdata['items'];
+
 		// purchase item(s)
 		$product_info = $this->customer->get_product($this->input->post('id'));
 
@@ -171,40 +174,16 @@ class Customers extends CI_Controller {
 		redirect("/");
 	}
 
-	public function destroy($id)
-	{
-
-		$items = $this->session->userdata['items'];
-
-		var_dump($this->session->userdata['count']);
-
-		foreach($items as $key => $item)
-		{
-			if($item['id'] == $id){
-				echo "found id " . $id . " in key " . $key;
-				unset($this->session->userdata['items'][$key]);
-				$new_count = $this->session->userdata["count"];
-				$new_count--;
-
-			}
-		}
-		$this->session->set_userdata('count', $new_count);
-		$new_items = $this->session->userdata['items'];
-		$this->session->set_userdata('items', $new_items);
-		var_dump($this->session->userdata['count']);
-
-		$this->load->view('cart', array(
-			$this->session->userdata['items']
-			));
-	}
-
 	public function create()
 	{
-		// var_dump($this->input->post());
-		// var_dump($this->session->userdata['items']);
-		// die('create');
+		var_dump($this->input->post());
+		var_dump($this->session->userdata['items']);
+		var_dump($this->session->userdata['total']);
+		die('create');
 		$cust_id = null;
 		$current_customer = $this->customer->current_customer($this->input->post());
+
+		// deduct order quantity from product inventory
 
 		if(!empty($current_customer))
 		{
@@ -222,6 +201,37 @@ class Customers extends CI_Controller {
 		}
 	}
 
+	public function destroy($id)
+	{
+
+		$items = $this->session->userdata['items'];
+		$new_count = null;
+
+		// var_dump($this->session->userdata['count']);
+
+		foreach($items as $key => $item)
+		{
+			if($item['id'] == $id){
+				// echo "found id " . $id . " in key " . $key;
+				unset($this->session->userdata['items'][$key]);
+				echo $this->session->userdata['count'];
+				$new_count = $this->session->userdata["count"];
+				--$new_count;
+				echo $new_count;
+
+			}
+		}
+		echo $new_count;
+		$this->session->set_userdata('count', $new_count);
+		$new_items = $this->session->userdata['items'];
+		$this->session->set_userdata('items', $new_items);
+		var_dump($this->session->userdata['count']);
+
+		$this->load->view('customers/shoppingCart', array(
+			$this->session->userdata['items']
+			));
+	}
 }
+
 
 ?>

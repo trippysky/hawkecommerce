@@ -15,22 +15,22 @@
 				});
 
 				$.get('/customers/customers/category_html', function(output){
-					$('#categories').html(output);	
+					$('#categories').html(output);
 				});
+
+				$('h5.message').delay(5000).fadeOut('slow', function() {
+					$(this).remove();
+				})
 
 				$(document).on('click', '.cat_list', function()
 				{
-					
 					$.post(
 						$(this).attr('action'),
 						$(this).serialize(),
 						$.get('/customers/customers/get_category_list/' + $(this).attr('id'), function(output) {
-								
-								$('#product').html(output);							
-							})
-						)
-					 					
-					
+							$('#product').html(output);							
+						})
+					)
 				});
 			});
 		</script>
@@ -39,7 +39,14 @@
 		<div class="container">
 			<div id="navbar" class="navbar">
 				<h2 class="alignleft">Hawk eCommerce</h2>
-				<p class="alignright"><a href="/cart">Shopping Cart (
+				<?php if($this->session->userdata("message")){; ?>
+					<h5 class="message"><?= $this->session->userdata("message"); ?></h5>
+				<?php //clear the message
+						$this->session->set_userdata("message", ""); 
+					} ?>
+				<p class="alignright">
+					<?php $this->session->flashdata("message"); ?>
+					<a href="/cart">Shopping Cart (
 					<?php if($this->session->userdata('count') == 0)
 					{ ?>
 						empty
@@ -86,7 +93,7 @@
 					<p><?php 
 
 					$pages = (round(count($products)/15));
-					for($i = 1 ; $i <= $pages; $i++)
+					for($i = 1; $i <= $pages; $i++)
 					{
 						echo "<a href = ''>".$i."</a> |";
 					}

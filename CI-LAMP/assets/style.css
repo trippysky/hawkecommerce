@@ -23,7 +23,10 @@
 	text-decoration: none;
 	color: inherit;
 }
-
+.navbar h5{
+	display: inline-block;
+	margin-left: 250px;
+}
 .alignleft{
 	float: left;
 }
@@ -52,6 +55,7 @@
 .leftnav .categories p{
 	padding-left: 20px;
 	padding-top: 10px;
+	color: rgb(0,0,255);
 }
 
 .leftnav .categories p.showall{
@@ -83,7 +87,6 @@
 	float: left;
 	clear: none;
 	overflow: hidden;
-	/*outline: 1px solid rgb(51,51,51);*/
 	margin-left: 10px;
 	margin-top: 10px;
 	margin-bottom: 10px;
@@ -128,15 +131,16 @@
 /* Start Product Page Styles */
 
 .leftheader{
-	outline: 1px solid rgb(255,0,0);
 	margin-top: 10px;
 	padding-left: 10px;
 	min-height: 50px;
 	vertical-align: top;
 
 }
+.leftheader h2{
+	margin-top: 10px;
+}
 .leftimg{
-	outline: 1px solid rgb(255,0,0);
 	margin-top: 10px;
 	margin-right: 25px;
 	padding-left: 10px;
@@ -150,32 +154,31 @@
 }
 
 .leftimg img#mainImg{
+	outline: 1px solid rgb(128,128,128);
 	width: 270px;
 	height: 270px;
 }
 
 .leftimg .otherViews{
-	outline: 1px solid rgb(0,255,0);
 	display: inline-block;
 	width: 270px;
 	height: 75px;
 }
 
+.leftimg .otherViews img.smallImg{
+	outline: 1px solid rgb(128,128,128);
+}
 .leftimg .otherViews .item{
 	width: 100px;
 	height: 100px;
 }
 
 .description{
-	outline: 1px solid rgb(0,0,255);
 	margin-top: 10px;
 	padding-left: 10px;
 	display: inline-block;
 	width: 635px;
 	min-height: 350px;
-}
-.purchase_form{
-	outline: 1px solid red;
 }
 .description form{
 	margin-top: 15px;
@@ -198,13 +201,16 @@
 }
 
 .similarItems{
-	outline: 1px solid rgb(0,0,0);
 	width: 875px;
 	min-height: 200px;
 	margin: 20px auto;
 }
+.similarItems .product{
+	outline: 1px solid rgb(128,128,128);
+	min-height: 200px;
+	margin-bottom: 10px;
+}
 .similarItems .item{
-	outline: 1px solid rgb(255,255,0);
 	display: inline-block;
 	margin-left: 15px;
 	width: 125px;
@@ -216,10 +222,12 @@
 /* Start Order Page Styles */
 
 	.order{
-		outline: 1px solid rgb(0,0,0);
 		width: 900px;
-		min-height: 275px;
+		min-height: 170px;
 		margin: 10px auto;
+	}
+	.order table{
+		width: 100%;
 	}
 	.order table, th, td{
 		outline: 1px solid rgb(128,128,128);
@@ -228,10 +236,10 @@
 		width: 40%;
 	}
 	.order table td:nth-child(2){
-		width: 15%;
+		width: 20%;
 	}
 	.order table td:nth-child(3){
-		width: 15%;
+		width: 20%;
 	}
 	.order table td:nth-child(4){
 		width: 20%;
