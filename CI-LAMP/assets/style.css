@@ -2,6 +2,10 @@
 	margin: 0px;
 	padding: 0px;
 }
+::-webkit-input-placeholder {
+   color: black;
+   font-weight: normal;
+}
 .container{
 	width: 995px;
 	margin:	10px auto;
@@ -247,6 +251,24 @@
 	.order table td, th{
 		padding: 5px;
 	}
+	.order table form.table{
+		display: inline-block;
+	}
+	.order form.table table input[type="number"]{
+		width: 30px;
+		text-align: center;
+	}
+	.order form.table table input.update{
+		background: transparent;
+		text-decoration: none;
+		cursor: pointer;
+		color: blue;
+		border: none;
+	}
+	.update:focus{
+		outline: none;
+	}
+
 	.order p{
 		padding: 10px;
 	}
