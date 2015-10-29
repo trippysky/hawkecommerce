@@ -30,7 +30,12 @@
 
 		public function update_status($status)
 		{
-			
+			// var_dump($status);
+			// die();
+
+			$query = "UPDATE orders SET status = ?, updated_at = NOW() where id = ?";
+			$values = array($status['orderStatus'], $status['id']);
+			return $this->db->query($query, $values);
 		}
 
 

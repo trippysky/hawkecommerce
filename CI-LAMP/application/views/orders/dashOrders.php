@@ -18,17 +18,15 @@
 
 </head>
 <body>
-	<?php 
-		// var_dump($results);
-		// die('view');
-
-
-	?>
+	<?php
+	// var_dump($this->session->userdata('id'));
+	// 		die();
+			?>
 	<div id="header">
 		<p>Dashboard</p>
 		<p><a href=""></a>Orders</p>
 		<p><a href="/show_products">Products</a></p>
-		<p><a href="/admins/admins/logout">logoff</a></p>
+		<p><a href="/logout">Logout</a></p>
 	</div>
 	
 	<form>
@@ -53,6 +51,11 @@
 			</tr>
 		</thead>
 		<tbody>	
+
+			<?php 
+				// var_dump($results);
+				// die('view');
+			 ?>
 			<?php foreach($results as $result){ ?>	
 			<tr>
 				<td><a href="/orders/show_order"><?= $result['id'] ?></a></td>
@@ -62,23 +65,24 @@
 				<td><?= $result['total'] ?></td>
 				<td>
 					<form id = "status_change" action = "/orders/orders/update_status" method = "post">
+						<input type = "hidden" name = "id" value = "<?= $result['id'] ?>">
 						<select name = "orderStatus">
 							<?php
-								if($result['status'] == "In Process")
+								if($result['status'] == "inProcess")
 								{
-									echo "<option value = 'inProcess'>". $result['status'] ."</option>
+									echo "<option value = 'inProcess'>In Process</option>
 									<option value = 'shipped'>Shipped</option>
 									<option value = 'cancelled'>Cancelled</option>";
 								}
-								elseif($result['status'] == "Shipped")
+								elseif($result['status'] == "shipped")
 								{
-									echo "<option value = 'shipped'>". $result['status'] ."</option>
+									echo "<option value = 'shipped'>Shipped</option>
 									<option value = 'inProcess'>In Process</option>
 									<option value = 'cancelled'>Cancelled</option>";
 								}
-								elseif($result['status'] == "Cancelled")
+								elseif($result['status'] == "cancelled")
 								{
-									echo "<option value = 'cancelled'>". $result['status'] ."</option>
+									echo "<option value = 'cancelled'>Cancelled</option>
 									<option value = 'inProcess'>In Process</option>
 									<option value = 'shipped'>Shipped</option>";
 								}

@@ -50,6 +50,7 @@ $route['show_products'] = "products/products/show_products";
 $route['add_product'] = "products/products/add_product";
 $route['products'] = "products/products";
 $route['admins'] = "admins/admins";
+$route['logout'] = "admins/admins/logout";
 $route['default_controller'] = "customers/customers";
 $route['404_override'] = '';
 

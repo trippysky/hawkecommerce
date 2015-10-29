@@ -10,17 +10,22 @@ class Orders extends CI_Controller {
 	
 		public function index()
 		{
+			// var_dump($this->session->userdata('id'));
+			// die();
+			if(!$this->session->userdata('id'))
+			{
+				redirect("/admins");
+			}
+
 			$results = $this->order->get_orders();
-			// var_dump($results);
-			// die('ctrl');
 			$this->load->view('/orders/dashOrders', array('results'=>$results));
 		}
 
 		public function update_status()
 		{
-			var_dump($this->input->post());
-			die();
+
 			$this->order->update_status($this->input->post());
+			redirect("/orders");
 		}
 
 

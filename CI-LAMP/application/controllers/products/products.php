@@ -10,8 +10,13 @@ class Products extends CI_Controller {
 	
 	public function index()
 	{
-		$results = $this->product->get_orders();
-		$this->load->view('products/dashOrders', array("results"=>$results));
+		// if(!$this->session->userdata('id'))
+		// {
+		// 	redirect("/admins");
+		// }
+		
+		$results = $this->order->get_orders();
+		$this->load->view('orders/dashOrders', array("results"=>$results));
 	}
 
 	public function show_products()
