@@ -103,8 +103,8 @@ class Customer extends CI_Model {
 		}
 
 		// create an order in the orders table
-		$query = "INSERT INTO orders (customer_id, status, created_at, updated_at) VALUES (?, ?, NOW(), NOW())";
-		$values = array($customer_id, 'In Process');
+		$query = "INSERT INTO orders (customer_id, status, total, created_at, updated_at) VALUES (?, ?, ?, NOW(), NOW())";
+		$values = array($customer_id, 'In Process', $this->session->userdata['total']);
 
 		$this->db->query($query, $values);
 

@@ -30,6 +30,7 @@
 				};
 			});
 		});
+		// return false;
 	</script>
 </head>
 <body>
@@ -49,7 +50,6 @@
 		<div style="clear: both;"></div>
 		<div class="order">
 			<!-- this will be a partial -->
-			<?php var_dump($this->session->userdata('items')); ?>
 			<table>
 				<thead>
 					<tr>
@@ -72,7 +72,10 @@
 							</tr>
 						<?php $total += $item['price']; ?>
 						<?php } ?>
-					<?php } ?>
+					<?php }
+							// store total to session data
+						 	$this->session->set_userdata('total', $total);
+					 	?>
 				</tbody>
 			</table>
 			<p class="alignright">Total: $ <?= $total ?></p>
@@ -116,11 +119,8 @@
 						<label>Zipcode:</label>
 						<input type="text" name="zipcode"/>
 					</p>
-<!-- 				</form>
-			</div>
-			<div class="billing"> -->
+					<!-- find another way to tag this element -->
  				<h3>Billing Information</h3>
-				<!-- <form action="/order/create" method="post"> -->
 					<input type="checkbox" name="sameas" id="checkbox"/> Same as Shipping
 					<p>
 						<label>First Name:</label>

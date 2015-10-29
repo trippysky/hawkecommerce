@@ -6,12 +6,6 @@
 		<link rel="stylesheet" type="text/css" href="../../assets/style.css"/>
 		<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
-<!-- 		<script>
-			$(document).ready(function(){
-
-			});
-		</script> -->
 	</head>
 	<body>
 		<div class="container">
@@ -35,6 +29,7 @@
 			<div class="leftimg">
 				<img id="mainImg" src="/../assets/<?= $product['image'] ?>"/>
 				<div class="otherViews">
+					<!-- set the image size using css -->
 					<img class="smallImg" src="/../assets/<?= $product['image'] ?>" height="50px" width="50px"/>
 					<img class="smallImg" src="/../assets/<?= $product['image'] ?>" height="50px" width="50px"/>
 					<img class="smallImg" src="/../assets/<?= $product['image'] ?>" height="50px" width="50px"/>
