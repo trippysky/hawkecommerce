@@ -28,6 +28,11 @@
 			
 		}
 
+		public function update_status($status)
+		{
+			
+		}
+
 
 	}
 ?>

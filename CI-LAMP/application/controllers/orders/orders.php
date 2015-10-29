@@ -20,7 +20,7 @@ class Orders extends CI_Controller {
 		{
 			var_dump($this->input->post());
 			die();
-			$this->order->update_status();
+			$this->order->update_status($this->input->post());
 		}
 
 

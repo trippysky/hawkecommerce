@@ -55,7 +55,7 @@
 		<tbody>	
 			<?php foreach($results as $result){ ?>	
 			<tr>
-				<td><a href=""><?= $result['id'] ?></a></td>
+				<td><a href="/orders/show_order"><?= $result['id'] ?></a></td>
 				<td><?= $result['first_name'] ?> <?= $result['last_name'] ?></td>
 				<td><?= $result['created_at'] ?></td>
 				<td><?= $result['street_1'] ?>, <?= $result['street_2'] ?>, <?= $result['city'] ?>, <?= $result['state'] ?> <?= $result['zip'] ?></td>
