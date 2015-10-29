@@ -11,7 +11,8 @@
 			$query = "SELECT 
 						products.id, products.name, products.inventory, products.qty_sold, products.image, products.active
 						FROM products 
-						WHERE products.active = 1";
+						WHERE products.active = 1
+						";
 						
 			return $this->db->query($query)->result_array();
 			

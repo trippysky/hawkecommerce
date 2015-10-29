@@ -18,6 +18,10 @@
 
 </head>
 <body>
+	<?php
+	// var_dump($this->session->userdata('id'));
+	// 		die('view page');
+			?>
 	<h2>Admin Login Page</h2>
 	<form action = "/admins/login" method = "post">
 		<p>

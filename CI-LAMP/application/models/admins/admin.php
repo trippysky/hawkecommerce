@@ -20,7 +20,7 @@
 			$query = "SELECT id FROM admins WHERE email = ? AND password = ?";
 			$values = array($post["email"], $post["password"]);
 			$user = $this->db->query($query,$values)->row_array();
-
+			
 			if(!empty($user)){
 				// user found
 				$resultdata = array('id' => $user["id"]);

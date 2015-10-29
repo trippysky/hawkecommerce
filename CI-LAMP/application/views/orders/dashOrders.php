@@ -9,7 +9,7 @@
     	});
     </script>
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+<link type = "text/css" rel="stylesheet" href="/assets/style.css">
 
 
 <!-- Latest compiled and minified JavaScript -->
@@ -18,17 +18,15 @@
 
 </head>
 <body>
-	<?php 
-		// var_dump($results);
-		// die('view');
-
-
-	?>
+	<?php
+	// var_dump($this->session->userdata('id'));
+	// 		die();
+			?>
 	<div id="header">
 		<p>Dashboard</p>
 		<p><a href=""></a>Orders</p>
 		<p><a href="/show_products">Products</a></p>
-		<p><a href="/admins/admins/logout">logoff</a></p>
+		<p><a href="/logout">Logout</a></p>
 	</div>
 	
 	<form>
@@ -53,32 +51,42 @@
 			</tr>
 		</thead>
 		<tbody>	
+
+			<?php 
+				// var_dump($results);
+				// die('view');
+			 ?>
 			<?php foreach($results as $result){ ?>	
 			<tr>
-				<td><a href=""><?= $result['id'] ?></a></td>
+
+				<td><a href="/show_orders"><?= $result['id'] ?></a></td>
+
+				<td><a href="/orders/<?= $result['id'] ?>"</a></td>
+
 				<td><?= $result['first_name'] ?> <?= $result['last_name'] ?></td>
 				<td><?= $result['created_at'] ?></td>
 				<td><?= $result['street_1'] ?>, <?= $result['street_2'] ?>, <?= $result['city'] ?>, <?= $result['state'] ?> <?= $result['zip'] ?></td>
 				<td><?= $result['total'] ?></td>
 				<td>
 					<form id = "status_change" action = "/orders/orders/update_status" method = "post">
+						<input type = "hidden" name = "id" value = "<?= $result['id'] ?>">
 						<select name = "orderStatus">
 							<?php
-								if($result['status'] == "In Process")
+								if($result['status'] == "inProcess")
 								{
-									echo "<option value = 'inProcess'>". $result['status'] ."</option>
+									echo "<option value = 'inProcess'>In Process</option>
 									<option value = 'shipped'>Shipped</option>
 									<option value = 'cancelled'>Cancelled</option>";
 								}
-								elseif($result['status'] == "Shipped")
+								elseif($result['status'] == "shipped")
 								{
-									echo "<option value = 'shipped'>". $result['status'] ."</option>
+									echo "<option value = 'shipped'>Shipped</option>
 									<option value = 'inProcess'>In Process</option>
 									<option value = 'cancelled'>Cancelled</option>";
 								}
-								elseif($result['status'] == "Cancelled")
+								elseif($result['status'] == "cancelled")
 								{
-									echo "<option value = 'cancelled'>". $result['status'] ."</option>
+									echo "<option value = 'cancelled'>Cancelled</option>
 									<option value = 'inProcess'>In Process</option>
 									<option value = 'shipped'>Shipped</option>";
 								}
