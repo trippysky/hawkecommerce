@@ -16,7 +16,6 @@
 
 				$.get('/customers/customers/category_html', function(output){
 					$('#categories').html(output);
-
 				});
 
 				$('h5.message').delay(5000).fadeOut('slow', function() {
@@ -29,9 +28,9 @@
 						$(this).attr('action'),
 						$(this).serialize(),
 						$.get('/customers/customers/get_category_list/' + $(this).attr('id'), function(output) {
-								$('#product').html(output);							
-							})
-						)
+							$('#product').html(output);							
+						})
+					)
 				});
 			});
 		</script>
