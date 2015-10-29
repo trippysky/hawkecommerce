@@ -51,6 +51,7 @@ $route['add_product'] = "products/products/add_product";
 $route['products'] = "products/products";
 $route['admins'] = "admins/admins";
 $route['logout'] = "admins/admins/logout";
+$route['show_orders/(:any)'] = "orders/orders/order_by_id/$1";
 $route['default_controller'] = "customers/customers";
 $route['404_override'] = '';
 
