@@ -20,44 +20,55 @@
 </head>
 <body>
 	<div class="orderInfo">
-		<h5>Order ID:</h5>
-		<h5>Customer shipping info:</h5>
-		<p>Name: <br>
-		<p>Address:  <br>
-		<p>City:  <br>
-		<p>State:  <br>
-		<p>Zip:</p><br>
+	
+		<h5>Order ID:  <?= $orders['order_id']; ?></h5>
+		<h5>Customer shipping info:  </h5>
+		<p>Name:  <?= $orders['customers_first_name'] ; ?> <br>
+		<p>Address:  <?= $orders['street_1'] ; ?><br>
+		<p>City:  <?= $orders['city'] ; ?><br>
+		<p>State: <?= $orders['state'] ; ?> <br>
+		<p>Zip:  <?= $orders['zip'] ; ?></p><br>
 
-		<p>Customer billing info:</p>
-		<p>Name:</p>
-		<p>Address:</p>
-		<p>City:</p>
-		<p>State:</p>
-		<p>Zip:</p><br>
+		<p>Customer billing info:  </p>
+		<p>Name:  <?= $orders['name'] ; ?></p>
+		<p>Address:  <?= $orders['street_1'] ; ?></p>
+		<p>City: <?= $orders['city'] ; ?></p>
+		<p>State:  <?= $orders['state'] ; ?></p>
+		<p>Zip:  <?= $orders['zip'] ; ?></p><br>
+
 	</div>
 
 	<div class="customerBillingInfo">
 		<table>
 			<tr>
+
 				<th>ID</th>
 				<th>Item</th>
-				<th>Price</th>
+				<th>Price </th>
 				<th>Quantity</th>
-				<th>Total</th>
+				<th>Total  </th>
 			</tr>
+
+			<?php foreach $customer_info as $orders) 
+			
+			{
+			var_dump($orders);
+			die(); ?>
 			<tr>
-				<th>product ID</th>
-				<th>Product name</th>
-				<th>product price</th>
-				<th>product quantity</th>
+
+				<th><?= $orders['id'] ; ?></th>
+				<th><?= $orders['name'] ; ?></th>
+				<th><?= $orders['price'] ; ?></th>
+				<th><?= $orders['inventory'] ; ?></th>
 				<th>product order total</th>
 			</tr>
+			<?php }?>
 		</table>
 		
 	</div>
 	<div class="totalBilling">
 		Sub total:  <br>
-		Shipping:  <br>
+		Shipping:  Free<br>
 		Total Price:
 		
 	</div>
