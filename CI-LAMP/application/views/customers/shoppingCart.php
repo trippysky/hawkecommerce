@@ -30,7 +30,6 @@
 				};
 			});
 		});
-		// return false;
 	</script>
 </head>
 <body>
@@ -50,34 +49,40 @@
 		<div style="clear: both;"></div>
 		<div class="order">
 			<!-- this will be a partial -->
-			<table>
-				<thead>
-					<tr>
-						<th>Item</th>
-						<th>Price</th>
-						<th>Quantity</th>
-						<th>Total</th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php if(isset($this->session->userdata['items']) && $this->session->userdata["items"] !== null){
-						$total = 0;
-						foreach($this->session->userdata['items'] as $item)
-						{ ?>
-							<tr>
-								<td><?= $item['name']; ?></td>
-								<td>$ <?= $item['price']/$item['qty']; ?></td>
-								<td align="center"><?= $item['qty']; ?> <a href="/customers/update">update</a> <a href="delete/<?= $item['id'] ?>"><i class="fa fa-trash-o"></i></a></td>
-								<td>$ <?= $item['price']; ?></td>
-							</tr>
-						<?php $total += $item['price']; ?>
-						<?php } ?>
-					<?php }
-							// store total to session data
-						 	$this->session->set_userdata('total', $total);
-					 	?>
-				</tbody>
-			</table>
+			<form class="table" action="update" method="post">
+				<table>
+					<thead>
+						<tr>
+							<th>Item</th>
+							<th>Price</th>
+							<th>Quantity</th>
+							<th>Total</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php if(isset($this->session->userdata['items']) && $this->session->userdata["items"] !== null){
+							$total = 0;
+							foreach($this->session->userdata['items'] as $item)
+							{ ?>
+								<tr>
+									<td><?= $item['name']; ?></td>
+									<td>$ <?= $item['price']/$item['qty']; ?></td>
+									<td align="center">
+										<input type="hidden" name="id" value="<?= $item['id']; ?>"/>
+										<input type="number" name="qty" min="1" max="3" placeholder="<?= $item['qty']; ?>"/>
+										<input type="submit" class="update" value="update"/>
+										<a href="delete/<?= $item['id'] ?>"><i class="fa fa-trash-o"></i></a></td>
+									<td>$ <?= $item['price']; ?></td>
+								</tr>
+							<?php $total += $item['price']; ?>
+							<?php } ?>
+						<?php }
+								// store total to session data
+							 	$this->session->set_userdata('total', $total);
+						 	?>
+					</tbody>
+				</table>
+			</form>
 			<p class="alignright">Total: $ <?= $total ?></p>
 			<div style="clear: both;"></div>
 			<p class="alignright"><a href="/"><button class="shopping">Continue Shopping</button></a></p>

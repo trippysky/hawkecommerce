@@ -51,7 +51,6 @@ class Customers extends CI_Controller {
 			"products" => $products
 			));
 	}
-
 	
 	public function show_product($id)
 	{
@@ -93,11 +92,13 @@ class Customers extends CI_Controller {
 	
 	public function buy()
 	{
+		// die('buy');
 		if(!isset($this->session->userdata['items']))
 		{
 			$count = 0;
 			$this->session->set_userdata("items", array());
 		}
+
 		// purchase item(s)
 		$product_info = $this->customer->get_product($this->input->post('id'));
 
@@ -106,12 +107,36 @@ class Customers extends CI_Controller {
 		$prod_price = $product_info['price'];
 		$name = $product_info['name'];
 
-		$price = $prod_price * $qty;
+		$in_cart = false;
+		$orig_qty = null;
+		$new_qty = null;
 
+		// set up message for successfully added to cart
 		$this->session->set_userdata("message", $name . ' added to the cart!');
 
+		// get the session data to check whether the cart already has the selected item
+		$items = $this->session->userdata['items'];
+
+		foreach($items as $key => $item)
+		{
+			if($item['id'] == $id){
+
+				// keep track of original order quantity
+				$orig_qty = $item['qty'];
+
+				// remove the original order placed
+				unset($this->session->userdata['items'][$key]);
+			}
+		}
+
+		// calculate new price
+		$price = number_format($prod_price * $qty,2);
+
 		// cart items count
-		$count++;
+		$count = $qty;	
+
+		// update new qty
+		$qty += $orig_qty;
 
 		$item = array(
 			"id" => $id,
@@ -129,7 +154,6 @@ class Customers extends CI_Controller {
 
 		$this->session->set_userdata("items", $old_items);
 		$this->session->set_userdata("count", $old_count);
-
 
 		// var_dump($this->session->userdata('items'));
 		// die('cart');
@@ -138,21 +162,41 @@ class Customers extends CI_Controller {
 
 	public function update()
 	{
-
+		// store session data in a variable
 		$items = $this->session->userdata['items'];
 
 		// purchase item(s)
 		$product_info = $this->customer->get_product($this->input->post('id'));
 
+		var_dump($product_info);
+		var_dump($this->input->post());
+
 		$id = $this->input->post('id');
-		$qty = $this->input->post('quantity');
+		$qty = $this->input->post('qty');
 		$prod_price = $product_info['price'];
 		$name = $product_info['name'];
 
-		$price = $prod_price * $qty;
+		$price = number_format($prod_price * $qty,2);
 
-		// cart items count
-		$count++;
+		foreach($items as $key => $item)
+		{
+			if($item['id'] == $id){
+
+				// keep track of original order quantity
+				$orig_qty = $item['qty'];
+
+				// remove the original order placed
+				unset($this->session->userdata['items'][$key]);
+			}
+		}
+
+		$old_count = $this->session->userdata('count');
+
+		// reduce the cart count by original item count
+		$old_count -= $orig_qty;
+
+		// increase the cart count by new item count
+		$old_count += $qty;
 
 		$item = array(
 			"id" => $id,
@@ -161,17 +205,13 @@ class Customers extends CI_Controller {
 			"price" => $price
 			);
 
-		$old_count = $this->session->userdata('count');
-		$old_count += $count;
-
 		$old_items = $this->session->userdata('items');
 		$old_items[] = $item;
-
 
 		$this->session->set_userdata("items", $old_items);
 		$this->session->set_userdata("count", $old_count);
 
-		redirect("/");
+		redirect("/cart");
 	}
 
 	public function create()
@@ -212,26 +252,19 @@ class Customers extends CI_Controller {
 		foreach($items as $key => $item)
 		{
 			if($item['id'] == $id){
-				// echo "found id " . $id . " in key " . $key;
-				unset($this->session->userdata['items'][$key]);
-				echo $this->session->userdata['count'];
 				$new_count = $this->session->userdata["count"];
-				--$new_count;
-				echo $new_count;
-
+				$new_count -= $item['qty'];
+				unset($this->session->userdata['items'][$key]);
+				$this->session->set_userdata('count', $new_count);
 			}
 		}
-		echo $new_count;
-		$this->session->set_userdata('count', $new_count);
 		$new_items = $this->session->userdata['items'];
 		$this->session->set_userdata('items', $new_items);
-		var_dump($this->session->userdata['count']);
 
-		$this->load->view('customers/shoppingCart', array(
+		redirect('cart', array(
 			$this->session->userdata['items']
 			));
 	}
 }
-
 
 ?>
