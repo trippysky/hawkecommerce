@@ -27,11 +27,11 @@ class Admins extends CI_Controller {
 			// var_dump($this->session->userdata("id"));
 			// die('logged in');
 			// true: user found
-			redirect("/trips");
+			redirect("/orders");
 		}
 		else{
 			// false: user not found
-			redirect("/");
+			redirect("/admins/index");
 		}
 
 	}

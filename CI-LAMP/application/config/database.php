@@ -48,10 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
+$db['default']['hostname'] = 'hawkecommerce.cuy4gblwlset.us-west-2.rds.amazonaws.com';
 $db['default']['username'] = 'root';
-$db['default']['password'] = 'root';
-$db['default']['database'] = 'hawkEcommerce';
+$db['default']['password'] = 'goseahawks';
+$db['default']['database'] = 'hawkecommerce';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;

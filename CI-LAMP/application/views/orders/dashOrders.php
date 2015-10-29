@@ -18,6 +18,12 @@
 
 </head>
 <body>
+	<?php 
+		// var_dump($results);
+		// die('view');
+
+
+	?>
 	<div id="header">
 		<p>Dashboard</p>
 		<p><a href=""></a>Orders</p>
@@ -49,18 +55,37 @@
 		<tbody>	
 			<?php foreach($results as $result){ ?>	
 			<tr>
-				<td>(order_id)</td>
-				<td>(name)</td>
-				<td>(date)</td>
-				<td>(address)</td>
-				<td>(total)</td>
+				<td><a href=""><?= $result['id'] ?></a></td>
+				<td><?= $result['first_name'] ?> <?= $result['last_name'] ?></td>
+				<td><?= $result['created_at'] ?></td>
+				<td><?= $result['street_1'] ?>, <?= $result['street_2'] ?>, <?= $result['city'] ?>, <?= $result['state'] ?> <?= $result['zip'] ?></td>
+				<td><?= $result['total'] ?></td>
 				<td>
-					<form>
+					<form id = "status_change" action = "/orders/orders/update_status" method = "post">
 						<select name = "orderStatus">
-							<option value = "inProcess">In Process</option>
-							<option value = "shipped">Shipped</option>
-							<option value = "cancelled">Cancelled</option>
+							<?php
+								if($result['status'] == "In Process")
+								{
+									echo "<option value = 'inProcess'>". $result['status'] ."</option>
+									<option value = 'shipped'>Shipped</option>
+									<option value = 'cancelled'>Cancelled</option>";
+								}
+								elseif($result['status'] == "Shipped")
+								{
+									echo "<option value = 'shipped'>". $result['status'] ."</option>
+									<option value = 'inProcess'>In Process</option>
+									<option value = 'cancelled'>Cancelled</option>";
+								}
+								elseif($result['status'] == "Cancelled")
+								{
+									echo "<option value = 'cancelled'>". $result['status'] ."</option>
+									<option value = 'inProcess'>In Process</option>
+									<option value = 'shipped'>Shipped</option>";
+								}
+							?>
+							
 						</select>
+						<input type = "submit" value = "Change status">
 					</form>
 				</td>
 			</tr>
