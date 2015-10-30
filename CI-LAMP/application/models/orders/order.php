@@ -40,7 +40,7 @@
 		}
 		public function customer_info($order_id)
 		{
-			$query = "SELECT orders.id as order_id, customers.first_name, customers.last_name,
+			$query = "SELECT orders.id as order_id, orders.status, customers.first_name, customers.last_name,
 			shipaddresses.street_1 AS shipping_street1, shipaddresses.street_2 AS shipping_street2, shipaddresses.city AS shipping_city, shipaddresses.state AS shipping_state, shipaddresses.zip AS shipping_zip,	
 			billaddresses.street_1 AS billing_street1, billaddresses.street_2 AS billing_street2, billaddresses.city AS billing_city, billaddresses.state AS billing_state, billaddresses.zip AS billing_zip,
 			products.id, products.name, products.price, products.qty_sold, products.active

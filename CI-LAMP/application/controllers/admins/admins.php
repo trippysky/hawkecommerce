@@ -25,16 +25,16 @@ class Admins extends CI_Controller {
 	{		
 		$this->admin->login($this->input->post());
 
-		if($this->admin->login($this->input->post())){
-			// var_dump($this->session->userdata("id"));
-			// die('logged in');
+		if($this->admin->login($this->input->post()))
+		{
+			
 			// true: user found
 
 			redirect("/orders");
 		}
 		else{
 			// false: user not found
-			redirect("/admins/index");
+			redirect("/admins/admins/index");
 		}
 
 	}

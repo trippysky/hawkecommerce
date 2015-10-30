@@ -38,7 +38,7 @@ class Products extends CI_Controller {
 	{
 		$results = $this->product->get_categories();
 
-		$this->load->view("addProducts", array("results"=>$results));
+		$this->load->view("/products/addProducts", array("results"=>$results));
 	}
 
 	public function edit_product($id)
@@ -59,7 +59,12 @@ class Products extends CI_Controller {
 	{
 		$this->product->delete_product($id);
 		redirect("/show_products");
+	}
 
+	public function activate_product($id)
+	{
+		$this->product->activate_product($id);
+		redirect("/show_products");
 	}
 }
 

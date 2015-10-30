@@ -19,7 +19,12 @@
 </head>
 <body>
 
-	
+	<div id="header">
+		<p>Dashboard</p>
+		<p><a href="/orders">Orders</a></p>
+		<p><b>Products</b></p>
+		<p><a href="/logout">Logout</a></p>
+	</div>
 
 	<div>
 		<form>
@@ -37,6 +42,7 @@
 				<th>Name</th>
 				<th>Inventory Count</th>
 				<th>Quantity Sold</th>
+				<th>Active?</th>
 				<th>Action</th>
 			</tr>
 		</thead>
@@ -45,17 +51,39 @@
 			//  var_dump($results);
 			// die();
 			?>
-			<?php foreach($results as $result){ ?>
+			<?php 
+			foreach($results as $result){ 
 				
+			if($result['active'] == 1)
+			{
+				$actv = "Yes";
+			}
+			else
+			{
+				$actv = "No";
+			}
+			?>
+
 			<tr>
 				<td><img src="/assets/<?= $result['image']; ?>"></td>
 				<td><?= $result['id']; ?></td>
 				<td><?= $result['name']; ?></td>
 				<td><?= $result['inventory']; ?></td>
 				<td><?= $result['qty_sold']; ?></td>
+				<td><?= $actv; ?></td>
 				<td>
 					<a href="/edit_product/<?= $result['id'] ?>">Edit</a>
-					<a href="/delete_product/<?= $result['id'] ?>">Delete</a>
+					<?php
+					if($result['active'] == 1)
+			{
+				echo "<a href='/delete_product/".$result['id'] ."'>Remove from Inventory</a>";
+			}
+			else
+			{
+				echo "<a href='/activate_product/".$result['id'] ."'>Return to Inventory</a>";
+			}
+			?>
+					
 				</td>
 			</tr>
 			<?php } ?>

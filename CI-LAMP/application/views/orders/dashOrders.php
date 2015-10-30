@@ -24,7 +24,7 @@
 			?>
 	<div id="header">
 		<p>Dashboard</p>
-		<p><a href=""></a>Orders</p>
+		<p><b>Orders</b></p>
 		<p><a href="/show_products">Products</a></p>
 		<p><a href="/logout">Logout</a></p>
 	</div>
