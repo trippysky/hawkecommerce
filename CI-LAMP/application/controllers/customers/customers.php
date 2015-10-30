@@ -261,6 +261,7 @@ class Customers extends CI_Controller {
 		$new_items = $this->session->userdata['items'];
 		$this->session->set_userdata('items', $new_items);
 
+		// add check if userdata doesn't exist redirect to index
 		redirect('cart', array(
 			$this->session->userdata['items']
 			));
