@@ -43,15 +43,27 @@ class Customers extends CI_Controller {
 			"products" => $products));
 	}
 
-	// public function product_html($products)
-	// {
-	// 	// get product data
+	public function get_popular()
+	{
+		// var_dump($this->input->post());
+		// die('get_popular');
+		// get product data
+		if($this->input->post('sort') == 'Popular')
+		{
+			$products = $this->customer->get_products_popular();
+		}
+		else
+		{
+			$products = $this->customer->get_products();
+		}
 
-	// 	$this->load->view("partials/customers/products", array(
-	// 		"products" => $products
-	// 		));
-	// }
-	
+		// var_dump($products);
+		// die('index_html');
+
+		$this->load->view("partials/customers/products", array(
+			"products" => $products));
+	}
+
 	public function show_product($id)
 	{
 		// get specific product data
@@ -74,16 +86,10 @@ class Customers extends CI_Controller {
 		redirect('/');
 	}
 
-
 	public function get_category_list($id)
 	{
 		// get product data
 		$category_list = $this->customer->get_by_category($id);
-
-		// var_dump($category_list);
-		// die('contr');
-
-		// redirect("/categories/product_html", $products);
 
 		$this->load->view('partials/customers/products', array(
 			"products" => $category_list
@@ -94,7 +100,6 @@ class Customers extends CI_Controller {
 	{
 		$this->load->view('customers/shoppingCart.php');
 	}
-
 	
 	public function buy()
 	{
@@ -176,11 +181,14 @@ class Customers extends CI_Controller {
 		// purchase item(s)
 		$product_info = $this->customer->get_product($this->input->post('id'));
 
-		// var_dump($product_info);
-		// var_dump($this->input->post());
+		var_dump($product_info);
+		var_dump($this->input->post());
+
+		die();
 
 		$id = $this->input->post('id');
 		$qty = $this->input->post('qty');
+		var_dump($this->input->post('qty'));
 		$prod_price = $product_info['price'];
 		$name = $product_info['name'];
 
@@ -205,6 +213,9 @@ class Customers extends CI_Controller {
 
 		// increase the cart count by new item count
 		$old_count += $qty;
+		echo $qty;
+		echo $old_count;
+		die("Here's Johnny!");
 
 		$item = array(
 			"id" => $id,
@@ -247,13 +258,11 @@ class Customers extends CI_Controller {
 		// set up message for successfully purchased
 		$this->session->set_userdata("message", "Thank you, " . $this->session->userdata['first_name'] . '! Your order will be processed shortly.');
 
-		// clear the session
-		// $this->session->sess_destroy();
-
 		// use unset to maintain the message for redirect
 		$this->session->unset_userdata('items');
 		$this->session->unset_userdata('count');
 		$this->session->unset_userdata('total');
+		$this->session->unset_userdata('category');
 
 		redirect("/");
 	}

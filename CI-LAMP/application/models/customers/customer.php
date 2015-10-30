@@ -9,7 +9,7 @@ class Customer extends CI_Model {
 
 	public function get_products()
 	{
-		$query = "SELECT products.id, products.name, description, price, inventory, image, categories.name as category FROM products
+		$query = "SELECT products.id, products.name, description, price, inventory, qty_sold, image, categories.name as category FROM products
 					JOIN categories
 					ON products.category_id = categories.id
 					WHERE active
@@ -18,9 +18,21 @@ class Customer extends CI_Model {
 		return $this->db->query($query)->result_array();
 	}
 
+	public function get_products_popular()
+	{
+		// die('called me');
+		$query = "SELECT products.id, products.name, description, price, inventory, qty_sold, image, categories.name as category FROM products
+					JOIN categories
+					ON products.category_id = categories.id
+					WHERE active
+					ORDER BY qty_sold DESC";
+
+		return $this->db->query($query)->result_array();
+	}
+
 	public function get_product($id)
 	{
-		$query = "SELECT products.id, products.name, description, price, inventory, image, categories.name as category, categories.id as categories_id FROM products
+		$query = "SELECT products.id, products.name, description, price, inventory, qty_sold, image, categories.name as category, categories.id as categories_id FROM products
 					JOIN categories
 					ON products.category_id = categories.id
 					WHERE products.id = ?";
