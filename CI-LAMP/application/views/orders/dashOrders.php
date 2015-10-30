@@ -25,6 +25,8 @@
 	<?php
 	// var_dump($this->session->userdata('id'));
 	// 		die();
+	
+
 			?>
 	<div class = "navbar">
 		<h5>Dashboard</h5>
@@ -43,7 +45,7 @@
 	</form>
 	
 	<!-- Main table here -->
-	<table>
+	<table class = "order">
 		<thead>
 			<tr>
 				<th>OrderID</th>
@@ -60,14 +62,18 @@
 				// var_dump($results);
 				// die('view');
 			 ?>
-			<?php foreach($results as $result){ ?>	
+			<?php 
+			foreach($results as $result){ 
+				
+				$dateval = date("Y-m-d", strtotime($result["created_at"]));
+				?>	
 			<tr>
 
 				<td><a href="/show_orders/<?= $result['id'] ?>"><?= $result['id'] ?></a></td>
 
 				
 				<td><?= $result['first_name'] ?> <?= $result['last_name'] ?></td>
-				<td><?= $result['created_at'] ?></td>
+				<td><?= $dateval; ?></td>
 				<td><?= $result['street_1'] ?>, <?= $result['street_2'] ?>, <?= $result['city'] ?>, <?= $result['state'] ?> <?= $result['zip'] ?></td>
 				<td><?= $result['total'] ?></td>
 				<td>

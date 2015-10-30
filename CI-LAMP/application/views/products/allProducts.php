@@ -39,7 +39,7 @@
 	</div>
 
 	<!-- Main table here -->
-	<table>
+	<table class = "order">
 		<thead>
 			<tr>
 				<th>Picture</th>
@@ -77,7 +77,7 @@
 				<td><?= $result['qty_sold']; ?></td>
 				<td><?= $actv; ?></td>
 				<td>
-					<a href="/edit_product/<?= $result['id'] ?>">Edit</a>
+					<a href="/edit_product/<?= $result['id'] ?>">Edit</a><br><br>
 					<?php
 					if($result['active'] == 1)
 			{
