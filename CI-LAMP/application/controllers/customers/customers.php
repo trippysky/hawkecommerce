@@ -92,6 +92,7 @@ class Customers extends CI_Controller {
 	
 	public function buy()
 	{
+
 		// die('buy');
 		if(!isset($this->session->userdata['items']))
 		{
@@ -101,7 +102,8 @@ class Customers extends CI_Controller {
 
 		// purchase item(s)
 		$product_info = $this->customer->get_product($this->input->post('id'));
-
+		// var_dump($product_info);
+		// die();
 		$id = $this->input->post('id');
 		$qty = $this->input->post('quantity');
 		$prod_price = $product_info['price'];
@@ -125,7 +127,7 @@ class Customers extends CI_Controller {
 				$orig_qty = $item['qty'];
 
 				// remove the original order placed
-				unset($this->session->userdata['items'][$key]);
+				$this->session->unset_userdata(['items'][$key]);
 			}
 		}
 

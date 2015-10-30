@@ -19,6 +19,7 @@ class Customer extends CI_Model {
 		$query = "SELECT products.id, products.name, description, price, inventory, image, categories.name as category FROM products
 					JOIN categories
 					ON products.category_id = categories.id
+					WHERE products.active = 1
 					ORDER BY price DESC";
 
 		return $this->db->query($query)->result_array();
@@ -42,6 +43,7 @@ class Customer extends CI_Model {
 					JOIN categories
 					ON products.category_id = categories.id 
 					WHERE products.category_id = ?
+					AND products.active = 1
 					LIMIT 15";
 		$values = $id;
 
@@ -75,6 +77,9 @@ class Customer extends CI_Model {
 
 	public function create_order($post, $cust_id)
 	{
+
+		var_dump($post);
+		die();
 		// create a customer in the customers table.
 		if($cust_id == null)
 		{
