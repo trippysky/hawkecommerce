@@ -10,7 +10,10 @@
     	});
     </script>
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+<!-- Local stylesheet -->
+<link type = "text/css" rel="stylesheet" href="/assets/style.css">
 
 
 <!-- Latest compiled and minified JavaScript -->
@@ -21,36 +24,38 @@
 
 <body>
 
+	<div class = "container">
 	<?php //var_dump($results); die('view'); 
 	?>
 <h3>Add a New Product</h3>
-	<div class = "form_edit">
+	<div class="customer_info">
 		<form action = "/products/products/create_product" method = "post">
-			Name:  
-				<input type="text" name="name"></input><br>
-				Description:
-				<textarea id="description" name="description"></textarea><br>
-				Price:
-				<input type = "text" name = "price"><br>
-				Quantity:
-				<input type = "text" name = "qty"><br>
-			Categories: 
+			  
+				<input type="text" name="name" placeholder = "Name"></input><br>
+				
+				<textarea id="description" name="description" placeholder = "Description"></textarea><br>
+				
+				<input type = "text" name = "price" placeholder = "Price"><br>
+				
+				<input type = "text" name = "qty"placeholder = "Quantity"><br>
+			 
 				<select name = "categories">
-					<option value = ""></option>
+					<option>Select a Category</option>
 					<?php foreach($results as $result){ ?>
 					<option value = "<?= $result['id'] ?>"><?= $result['name'] ?></option>
 					<?php } ?>
 				</select><br>
-			or add a new category:
-				<input type="text" name="new_category"><br>
-			Images:
-			<button type="button" name="Upload" onlick="">Upload</button><br>
 			
+				<input type="text" name="new_category" placeholder = "or add a new category"><br>
+			
+			<button type="button" name="Upload" onlick="">Upload an Image</button><br>
+			
+			<a href="/show_products"><button>Cancel</button></a>
+			<a href="/customers/show_product/<?= $result['id'] ?>"></a><button>Preview</button>
 			<input type="submit" value="Add"><br>
 		</form>
-		<a href="/show_products"><button>Cancel</button></a>
-		<button>Preview</button>
-	</div>
 
+	</div>
+	</div>
 </body>
 </html>

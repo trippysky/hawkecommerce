@@ -9,6 +9,9 @@
     	});
     </script>
 <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+<!-- Local stylesheet -->
 <link type = "text/css" rel="stylesheet" href="/assets/style.css">
 
 
@@ -18,15 +21,18 @@
 
 </head>
 <body>
+	<div class = "container">
 	<?php
 	// var_dump($this->session->userdata('id'));
 	// 		die();
+	
+
 			?>
-	<div id="header">
-		<p>Dashboard</p>
-		<p><b>Orders</b></p>
-		<p><a href="/show_products">Products</a></p>
-		<p><a href="/logout">Logout</a></p>
+	<div class = "navbar">
+		<h5>Dashboard</h5>
+		<h5><b>Orders</b></h5>
+		<h5><a href="/show_products">Products</a></h5>
+		<h5><a href="/logout">Logout</a></h5>
 	</div>
 	
 	<form>
@@ -39,7 +45,7 @@
 	</form>
 	
 	<!-- Main table here -->
-	<table>
+	<table class = "order">
 		<thead>
 			<tr>
 				<th>OrderID</th>
@@ -56,14 +62,18 @@
 				// var_dump($results);
 				// die('view');
 			 ?>
-			<?php foreach($results as $result){ ?>	
+			<?php 
+			foreach($results as $result){ 
+				
+				$dateval = date("Y-m-d", strtotime($result["created_at"]));
+				?>	
 			<tr>
 
 				<td><a href="/show_orders/<?= $result['id'] ?>"><?= $result['id'] ?></a></td>
 
 				
 				<td><?= $result['first_name'] ?> <?= $result['last_name'] ?></td>
-				<td><?= $result['created_at'] ?></td>
+				<td><?= $dateval; ?></td>
 				<td><?= $result['street_1'] ?>, <?= $result['street_2'] ?>, <?= $result['city'] ?>, <?= $result['state'] ?> <?= $result['zip'] ?></td>
 				<td><?= $result['total'] ?></td>
 				<td>
@@ -101,6 +111,6 @@
 	</table>
 
 	<!-- Pagination here -->
-
+</div>
 </body>
 </html>

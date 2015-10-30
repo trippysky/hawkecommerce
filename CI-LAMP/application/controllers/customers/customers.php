@@ -255,6 +255,10 @@ class Customers extends CI_Controller {
 		// then call create_order
 		$this->customer->create_order($this->input->post(), $cust_id);
 
+		if(!$this->session->flashdata('errors'))
+		{
+			redirect("/cart");
+		}
 		// set up message for successfully purchased
 		$this->session->set_userdata("message", "Thank you, " . $this->session->userdata['first_name'] . '! Your order will be processed shortly.');
 

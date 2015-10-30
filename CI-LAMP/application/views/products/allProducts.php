@@ -9,6 +9,9 @@
     	});
     </script>
 <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+<!-- Local stylesheet -->
 <link type = "text/css" rel="stylesheet" href="/assets/style.css">
 
 
@@ -18,23 +21,25 @@
 
 </head>
 <body>
+	<div class = "container">
 
-	<div id="header">
-		<p>Dashboard</p>
-		<p><a href="/orders">Orders</a></p>
-		<p><b>Products</b></p>
-		<p><a href="/logout">Logout</a></p>
+	<div class = "navbar" id="allprodhead">
+		<h5>Dashboard</h5>
+		<h5><a href="/orders">Orders</a></h5>
+		<h5><b>Products</b></h5>
+		<h5><a href="/logout">Logout</a></h5>
 	</div>
 
 	<div>
-		<form>
-			<input type = "search" name = "search" placeholder = "Search">
-		</form>
+		<form action="/" method="post" class="search"/>
+					<input type="search" name="searchName" placeholder="Search"/>
+					<i class="fa fa-search"></i>
+				</form>
 		<a href="/add_product"><button>Add new product</button></a>
 	</div>
 
 	<!-- Main table here -->
-	<table>
+	<table class = "order">
 		<thead>
 			<tr>
 				<th>Picture</th>
@@ -72,7 +77,7 @@
 				<td><?= $result['qty_sold']; ?></td>
 				<td><?= $actv; ?></td>
 				<td>
-					<a href="/edit_product/<?= $result['id'] ?>">Edit</a>
+					<a href="/edit_product/<?= $result['id'] ?>">Edit</a><br><br>
 					<?php
 					if($result['active'] == 1)
 			{
@@ -89,7 +94,7 @@
 			<?php } ?>
 		</tbody>
 	</table>
-
+	</div>
 	<!-- Pagination here -->
 </body>
 </html>
