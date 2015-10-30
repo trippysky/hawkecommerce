@@ -4,7 +4,7 @@ class Customers extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->output->enable_profiler(TRUE);
+		// $this->output->enable_profiler(TRUE);
 		date_default_timezone_set('US/Pacific');
 	}
 
@@ -217,6 +217,7 @@ class Customers extends CI_Controller {
 			"id" => $id,
 			"qty" => $qty,
 			"name" => $name,
+			"prod_price" => $prod_price,
 			"price" => $price
 			);
 

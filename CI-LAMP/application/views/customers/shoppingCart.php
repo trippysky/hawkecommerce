@@ -87,11 +87,10 @@
 									<td>$ <?= $item['price']; ?></td>
 								</tr>
 							<?php $total += $item['price']; ?>
-							<?php } ?>
+							<?php } 
 								// store total to session data
 							 	$this->session->set_userdata('total', $total);
-						<?php }
-						 	?>
+							 } ?>
 					</tbody>
 				</table>
 			</form>
