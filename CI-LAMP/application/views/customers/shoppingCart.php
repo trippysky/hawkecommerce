@@ -67,6 +67,10 @@
 						</tr>
 					</thead>
 					<tbody>
+						<?php // declare total regardless
+							$total = number_format(0,2);
+
+							?>
 						<?php if(isset($this->session->userdata['items']) && $this->session->userdata["items"] !== null){
 							$total = 0;
 							foreach($this->session->userdata['items'] as $item)
@@ -84,14 +88,14 @@
 								</tr>
 							<?php $total += $item['price']; ?>
 							<?php } ?>
-						<?php }
 								// store total to session data
 							 	$this->session->set_userdata('total', $total);
+						<?php }
 						 	?>
 					</tbody>
 				</table>
 			</form>
-			<p class="alignright">Total: $ <?= $total ?></p>
+			<p class="alignright">Total: $ <?= $total; ?></p>
 			<div style="clear: both;"></div>
 			<p class="alignright"><a href="/"><button class="shopping">Continue Shopping</button></a></p>
 			<div style="clear: both;"></div>

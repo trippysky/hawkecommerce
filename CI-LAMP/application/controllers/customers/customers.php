@@ -260,7 +260,7 @@ class Customers extends CI_Controller {
 		// use unset to maintain the message for redirect
 		$this->session->unset_userdata('items');
 		$this->session->unset_userdata('count');
-		$this->session->unset_userdata('total');
+		$this->session->set_userdata('total');
 		$this->session->unset_userdata('category');
 
 		redirect("/");
