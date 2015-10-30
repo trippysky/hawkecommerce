@@ -163,25 +163,9 @@ class Customer extends CI_Model {
 			// store new inventory, new quantity sold and active
 			$new_inv = ($prod_info['inventory'] - $item['qty']);
 			$new_sold = ($prod_info['qty_sold'] + $item['qty']);
-			// $active = $prod_info['active'];
 
-			// if($new_inv <= 0)
-			// {
-			// 	// change active to 0 or should there be an out of stock column
-			// 	$active = 0;
-			// }
-
-			// // update inventory and qty sold in products
-			// if($active == 0)
-			// {
-			// 	$query = "UPDATE products SET inventory = ?, qty_sold = ?, active = ? WHERE id = ?";
-			// 	$values = array($new_inv, $new_sold, $active, $item['id']);
-			// }
-			// else
-			// {
 				$query = "UPDATE products SET inventory = ?, qty_sold = ? WHERE id = ?";
 				$values = array($new_inv, $new_sold, $item['id']);			
-			// }
 
 			$this->db->query($query, $values);
 		}

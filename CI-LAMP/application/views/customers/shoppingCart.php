@@ -70,10 +70,11 @@
 						<?php if(isset($this->session->userdata['items']) && $this->session->userdata["items"] !== null){
 							$total = 0;
 							foreach($this->session->userdata['items'] as $item)
-							{ ?>
+							{ 
+								?>
 								<tr>
 									<td><?= $item['name']; ?></td>
-									<td>$ <?= $item['price']/$item['qty']; ?></td>
+									<td>$ <?= $item['prod_price']; ?></td>
 									<td align="center">
 										<input type="hidden" name="id" value="<?= $item['id']; ?>"/>
 										<input type="number" id="qty" name="qty" min="1" max="10" placeholder="<?= $item['qty']; ?>"/>

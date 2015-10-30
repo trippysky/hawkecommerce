@@ -155,6 +155,7 @@ class Customers extends CI_Controller {
 			"id" => $id,
 			"qty" => $qty,
 			"name" => $name,
+			"prod_price" => $prod_price,
 			"price" => $price
 			);
 
@@ -181,14 +182,9 @@ class Customers extends CI_Controller {
 		// purchase item(s)
 		$product_info = $this->customer->get_product($this->input->post('id'));
 
-		var_dump($product_info);
-		var_dump($this->input->post());
-
-		die();
-
 		$id = $this->input->post('id');
 		$qty = $this->input->post('qty');
-		var_dump($this->input->post('qty'));
+		// var_dump($this->input->post('qty'));
 		$prod_price = $product_info['price'];
 		$name = $product_info['name'];
 
@@ -213,9 +209,6 @@ class Customers extends CI_Controller {
 
 		// increase the cart count by new item count
 		$old_count += $qty;
-		echo $qty;
-		echo $old_count;
-		die("Here's Johnny!");
 
 		$item = array(
 			"id" => $id,
