@@ -105,6 +105,7 @@ class Customer extends CI_Model {
 			{
 				
 			    $this->session->set_flashdata('errors', validation_errors());
+			    return false;
 
 			}
 			else
@@ -185,6 +186,7 @@ class Customer extends CI_Model {
 
 			$this->db->query($query, $values);
 		}
+		return true;
 	}}
 
 	public function current_customer($email)
