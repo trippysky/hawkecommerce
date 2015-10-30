@@ -9,6 +9,9 @@
     	});
     </script>
 <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+<!-- Local stylesheet -->
 <link type = "text/css" rel="stylesheet" href="/assets/style.css">
 
 
@@ -18,15 +21,16 @@
 
 </head>
 <body>
+	<div class = "container">
 	<?php
 	// var_dump($this->session->userdata('id'));
 	// 		die();
 			?>
-	<div id="header">
-		<p>Dashboard</p>
-		<p><b>Orders</b></p>
-		<p><a href="/show_products">Products</a></p>
-		<p><a href="/logout">Logout</a></p>
+	<div class = "navbar">
+		<h5>Dashboard</h5>
+		<h5><b>Orders</b></h5>
+		<h5><a href="/show_products">Products</a></h5>
+		<h5><a href="/logout">Logout</a></h5>
 	</div>
 	
 	<form>
@@ -101,6 +105,6 @@
 	</table>
 
 	<!-- Pagination here -->
-
+</div>
 </body>
 </html>

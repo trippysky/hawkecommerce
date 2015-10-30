@@ -10,7 +10,10 @@
     	});
     </script>
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+<!-- Local stylesheet -->
+<link type = "text/css" rel="stylesheet" href="/assets/style.css">
 
 
 <!-- Latest compiled and minified JavaScript -->
@@ -19,12 +22,12 @@
 
 </head>
 <body>
-
-	<div id="header">
-		<p>Dashboard</p>
-		<p><a href="/orders">Orders</a></p>
-		<p><a href="/show_products">Products</a></p>
-		<p><a href="/logout">Logout</a></p>
+	<div class = "container">
+	<div class = "navbar">
+		<h5>Dashboard</h5>
+		<h5><a href="/orders">Orders</a></h5>
+		<h5><a href="/show_products">Products</a></h5>
+		<h5><a href="/logout">Logout</a></h5>
 	</div>
 	
 	<div class="orderInfo">
@@ -89,6 +92,7 @@
 	</div>
 	<div class="status">
 		Status: <?= $customer_info['status'] ; ?>
+	</div>
 	</div>
 </body>
 </html>
