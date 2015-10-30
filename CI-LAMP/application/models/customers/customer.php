@@ -84,7 +84,7 @@ class Customer extends CI_Model {
 		// var_dump($post);
 		// die();
 
-			$this->form_validation->set_rules("email", "email", "is_unique[customers.email]|max_length[45]|valid_email|trim|required");
+			$this->form_validation->set_rules("email", "email", "max_length[45]|valid_email|trim|required");
 			$this->form_validation->set_rules("first_name", "shipping first name", "max_length[45]|trim|required");
 			$this->form_validation->set_rules("last_name", "shipping last name", "max_length[45]|trim|required");			
 			$this->form_validation->set_rules("address", "shipping address", "trim|required");

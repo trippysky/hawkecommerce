@@ -176,6 +176,7 @@ class Customers extends CI_Controller {
 
 	public function update()
 	{
+
 		// store session data in a variable
 		$items = $this->session->userdata['items'];
 
@@ -209,6 +210,8 @@ class Customers extends CI_Controller {
 
 		// increase the cart count by new item count
 		$old_count += $qty;
+		echo $qty;
+		echo $old_count;
 
 		$item = array(
 			"id" => $id,
@@ -248,11 +251,14 @@ class Customers extends CI_Controller {
 		// then call create_order
 		$this->customer->create_order($this->input->post(), $cust_id);
 
-		if(!$this->session->flashdata('errors'))
+		if(empty($this->session->flashdata('errors')))
 		{
-			redirect("/cart");
+			
+		redirect("/cart");
 		}
 		// set up message for successfully purchased
+		else
+		{
 		$this->session->set_userdata("message", "Thank you, " . $this->session->userdata['first_name'] . '! Your order will be processed shortly.');
 
 		// use unset to maintain the message for redirect
@@ -262,8 +268,9 @@ class Customers extends CI_Controller {
 		$this->session->unset_userdata('category');
 
 		redirect("/");
-	}
 
+	}
+	}
 	public function destroy($id)
 	{
 
