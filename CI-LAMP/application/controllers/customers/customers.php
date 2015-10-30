@@ -4,7 +4,7 @@ class Customers extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		// $this->output->enable_profiler(TRUE);
+		$this->output->enable_profiler(TRUE);
 		date_default_timezone_set('US/Pacific');
 	}
 
@@ -249,12 +249,8 @@ class Customers extends CI_Controller {
 		}
 
 		// then call create_order
-		$this->customer->create_order($this->input->post(), $cust_id);
-
-		if(empty($this->session->flashdata('errors')))
-		{
-			
-		redirect("/cart");
+		if($this->customer->create_order($this->input->post(), $cust_id) === false){
+			redirect("/cart");
 		}
 		// set up message for successfully purchased
 		else
