@@ -43,14 +43,14 @@ class Customers extends CI_Controller {
 			"products" => $products));
 	}
 
-	public function product_html($products)
-	{
-		// get product data
+	// public function product_html($products)
+	// {
+	// 	// get product data
 
-		$this->load->view("partials/customers/products", array(
-			"products" => $products
-			));
-	}
+	// 	$this->load->view("partials/customers/products", array(
+	// 		"products" => $products
+	// 		));
+	// }
 	
 	public function show_product($id)
 	{
@@ -68,6 +68,12 @@ class Customers extends CI_Controller {
 			"similar_products" => $similar_products
 			));
 	}
+
+	public function show_all()
+	{
+		redirect('/');
+	}
+
 
 	public function get_category_list($id)
 	{
@@ -168,8 +174,8 @@ class Customers extends CI_Controller {
 		// purchase item(s)
 		$product_info = $this->customer->get_product($this->input->post('id'));
 
-		var_dump($product_info);
-		var_dump($this->input->post());
+		// var_dump($product_info);
+		// var_dump($this->input->post());
 
 		$id = $this->input->post('id');
 		$qty = $this->input->post('qty');
@@ -216,29 +222,38 @@ class Customers extends CI_Controller {
 
 	public function create()
 	{
-		var_dump($this->input->post());
-		var_dump($this->session->userdata['items']);
-		var_dump($this->session->userdata['total']);
-		die('create');
+		// var_dump($this->input->post());
+		// var_dump($this->session->userdata['items']);
+		// var_dump($this->session->userdata['total']);
+
 		$cust_id = null;
-		$current_customer = $this->customer->current_customer($this->input->post());
+		$email = $this->input->post('email');
+		$current_customer = $this->customer->current_customer($email);
+
 
 		// deduct order quantity from product inventory
 
 		if(!empty($current_customer))
 		{
 			// get customer id
-
-			// then call create_order
+			$cust_id = $current_customer['id'];
 		}
-		else
-		{
-			$this->customer->create_order($this->input->post(), $cust_id);
-			// clear the session
-			$this->session->sess_destroy();
-			redirect("/");
 
-		}
+		// then call create_order
+		$this->customer->create_order($this->input->post(), $cust_id);
+
+		// set up message for successfully purchased
+		$this->session->set_userdata("message", "Thank you, " . $this->session->userdata['first_name'] . '! Your order will be processed shortly.');
+
+		// clear the session
+		// $this->session->sess_destroy();
+
+		// use unset to maintain the message for redirect
+		$this->session->unset_userdata('items');
+		$this->session->unset_userdata('count');
+		$this->session->unset_userdata('total');
+
+		redirect("/");
 	}
 
 	public function destroy($id)
@@ -246,8 +261,6 @@ class Customers extends CI_Controller {
 
 		$items = $this->session->userdata['items'];
 		$new_count = null;
-
-		// var_dump($this->session->userdata['count']);
 
 		foreach($items as $key => $item)
 		{
@@ -262,9 +275,16 @@ class Customers extends CI_Controller {
 		$this->session->set_userdata('items', $new_items);
 
 		// add check if userdata doesn't exist redirect to index
-		redirect('cart', array(
-			$this->session->userdata['items']
-			));
+		if($this->session->userdata('items') == null)
+		{
+			redirect("/");
+		}
+		else
+		{
+			redirect('cart', array(
+				$this->session->userdata['items']
+				));
+		}
 	}
 }
 

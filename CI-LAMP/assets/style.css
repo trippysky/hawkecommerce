@@ -6,8 +6,11 @@
    color: black;
    font-weight: normal;
 }
+a{
+	text-decoration: none;
+}
 .container{
-	width: 995px;
+	width: 1025px;
 	margin:	10px auto;
 	outline: 1px solid rgb(128,128,128);
 	font-family: Helvetica, sans-serif;
@@ -37,11 +40,13 @@
 .alignright{
 	float: right;
 }
+.products .alignright a{
+	text-decoration: underline;
+}
 
 .leftnav{
-	margin-top: 10px;
+	margin: 10px 0px 0px 5px;
 	display: inline-block;
-	outline: 1px solid rgb(128,0,0);
 	vertical-align: top;
 	width: 230px;
 	min-height: 300px;
@@ -72,20 +77,20 @@
 	text-decoration: none;
 }
 .products{
-	margin-top: 10px;
+	margin: 10px 10px;
 	display: inline-block;
-	outline: 1px solid rgb(0,128,0);
-	width: 750px;
+	width: 765px;
 }
 .products .header{
 	height: 50px;
-	outline: 1px solid rgb(128,128,0);
 }
 
 .products .images{
-	height: 540px;
+	height: 625px;
 }
-
+.products .product{
+	outline: 1px solid rgb(128,128,128);
+}
 .products .images .product .image, .similarItems .product .image{
 	position: relative;
 	float: left;
@@ -100,6 +105,8 @@
 .products .images .product .image img, .similarItems .product .image img{
 	position: relative;
 	z-index: 1;
+	width: 125px;
+	height: 125px;
 }
 
 .products .images .image p#price, .similarItems .image p#price{
@@ -114,8 +121,9 @@
 }
 
 .products .images .product, .similarItems .product{
-	height: 175px;
+	height: 195px;
 	width: 145px;
+	margin: 5px 2px;
 	display: inline-block;
 	vertical-align: top;
 }
@@ -125,9 +133,16 @@
 }
 
 .footernav{
-	height: 50px;
-	outline: 1px solid rgb(0,0,0);
-	vertical-align: bottom;
+	height: 30px;
+	text-align: center
+}
+.footernav p{
+	line-height: 30px;
+}
+.footernav p a{
+	color: blue;
+	font-weight: bold;
+	text-decoration: underline;
 }
 
 /* End All Products Page Styles */
@@ -171,6 +186,8 @@
 
 .leftimg .otherViews img.smallImg{
 	outline: 1px solid rgb(128,128,128);
+	width: 50px;
+	height: 50px;
 }
 .leftimg .otherViews .item{
 	width: 100px;
@@ -187,16 +204,18 @@
 .description form{
 	margin-top: 15px;
 }
-.description form select{
-	padding: 5px;
-	margin-left: 450px;
-	margin-top: -27px;
+.description form .pia{
+	display: inline-block;
+	width: 175px;
+	height: 30px;
+	float: right;
+	clear: both;
 }
-.description form input[type="submit"]{
+.description form .pia select{
 	padding: 5px;
-	margin-left: 25px;
-	margin-right: 25px;
-	margin-top: -28px;
+}
+.description form .pia input[type="submit"]{
+	padding: 5px;
 	background-color: rgb(43,120,228);
 	color: rgb(255,255,255);
 	font-weight: bold;

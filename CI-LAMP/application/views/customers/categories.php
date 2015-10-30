@@ -11,14 +11,13 @@
 			$(document).ready(function(){
 				$.get('/customers/customers/index_html', function(output) {
 					$('#product').html(output);
-					// console.log(output);					
 				});
 
 				$.get('/customers/customers/category_html', function(output){
 					$('#categories').html(output);
 				});
 
-				$('h5.message').delay(5000).fadeOut('slow', function() {
+				$('h5.message').delay(4000).fadeOut('slow', function() {
 					$(this).remove();
 				})
 
@@ -28,7 +27,7 @@
 						$(this).attr('action'),
 						$(this).serialize(),
 						$.get('/customers/customers/get_category_list/' + $(this).attr('id'), function(output) {
-							$('#product').html(output);							
+							$('#product').html(output);
 						})
 					)
 				});
@@ -45,7 +44,6 @@
 						$this->session->set_userdata("message", ""); 
 					} ?>
 				<p class="alignright">
-					<?php $this->session->flashdata("message"); ?>
 					<a href="/cart">Shopping Cart (
 					<?php if($this->session->userdata('count') == 0)
 					{ ?>
@@ -59,7 +57,7 @@
 			<div class="leftnav">
 				<!-- search button -->
 				<form action="/" method="post" class="search"/>
-					<input type="text" name="searchName" placeholder="product name"/>
+					<input type="search" name="searchName" placeholder="product name"/>
 					<i class="fa fa-search"></i>
 				</form>
 				<div id="categories" class="categories">
@@ -68,7 +66,7 @@
 			</div>
 			<div class="products">
 				<div id="header" class="header">
-					<h3 class="alignleft">
+					<h3 class="alignleft" id="title">
 						<?php if(isset($id) and $id){ ?>
 							<?= $category_list['name'] ?> (page # here)
 						<?php } else { ?>

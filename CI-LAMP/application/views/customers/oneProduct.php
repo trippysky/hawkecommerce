@@ -30,27 +30,31 @@
 				<img id="mainImg" src="/../assets/<?= $product['image'] ?>"/>
 				<div class="otherViews">
 					<!-- set the image size using css -->
-					<img class="smallImg" src="/../assets/<?= $product['image'] ?>" height="50px" width="50px"/>
-					<img class="smallImg" src="/../assets/<?= $product['image'] ?>" height="50px" width="50px"/>
-					<img class="smallImg" src="/../assets/<?= $product['image'] ?>" height="50px" width="50px"/>
-					<img class="smallImg" src="/../assets/<?= $product['image'] ?>" height="50px" width="50px"/>
-					<img class="smallImg" src="/../assets/<?= $product['image'] ?>" height="50px" width="50px"/>
+					<img class="smallImg" src="/../assets/<?= $product['image'] ?>"/>
+					<img class="smallImg" src="/../assets/<?= $product['image'] ?>"/>
+					<img class="smallImg" src="/../assets/<?= $product['image'] ?>"/>
+					<img class="smallImg" src="/../assets/<?= $product['image'] ?>"/>
+					<img class="smallImg" src="/../assets/<?= $product['image'] ?>"/>
 				</div>
 			</div>
 			<div class="description">
 				<p><?= $product['name']; ?></p>
 				<form action="/buy" method="post">
 					<!-- set the value with ajax and calculate -->
-					<select id="qty" name="quantity">
-						<?php $qty_price = number_format(1 * $product['price'],2) ?>
-						<option value="1">1 (<?= $qty_price; ?>)</option>
-						<?php $qty_price = number_format(2 * $product['price'],2) ?>
-						<option value="2">2 (<?= $qty_price; ?>)</option>
-						<?php $qty_price = number_format(3 * $product['price'],2) ?>
-						<option value="3">3 (<?= $qty_price; ?>)</option>
-					</select>
-					<input type="hidden" name="id" value="<?= $product['id'] ?>"/>
-					<input type="submit" value="Buy"/>
+					<div class='pia'>
+						<select id="qty" name="quantity">
+							<?php
+								for($i = 1; $i < 11; $i++)
+								{
+									$qty_price = number_format($i * $product['price'],2);
+								?>
+									<option value="<?= $i ?>"><?= $i ?> (<?= $qty_price; ?>)</option>	
+							<?php } ?>
+							<?php $qty_price = number_format(2 * $product['price'],2) ?>
+						</select>
+						<input type="hidden" name="id" value="<?= $product['id'] ?>"/>
+						<input type="submit" value="Buy"/>
+					</div>
 				</form>
 			</div>
 			<div class="purchase_form">
@@ -63,7 +67,7 @@
 					<div class="product">
 						<div class="image">
 							<!-- this will become a partial -->
-							<img src="/assets/<?= $similar['image']; ?>" height="125px" width="125px"/>
+							<img class="similarImg" src="/assets/<?= $similar['image']; ?>"/>
 							<p id="price"><?= $similar['price']; ?></p>
 						</div>
 						<a href="/products/show/<?= $similar['id']; ?>"><p id="name"><?= $similar['name']; ?></p></a>

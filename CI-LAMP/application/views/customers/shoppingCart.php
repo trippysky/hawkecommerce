@@ -34,7 +34,6 @@
 </head>
 <body>
 	<div class="container">
-		<!-- this will become a partial -->
 		<div id="navbar" class="navbar">
 			<h2 class="alignleft">Hawk eCommerce</h2>
 			<p class="alignright">Shopping Cart (
@@ -48,7 +47,6 @@
 		</div>
 		<div style="clear: both;"></div>
 		<div class="order">
-			<!-- this will be a partial -->
 			<form class="table" action="update" method="post">
 				<table>
 					<thead>
