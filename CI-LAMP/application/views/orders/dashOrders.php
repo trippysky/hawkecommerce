@@ -24,7 +24,7 @@
 			?>
 	<div id="header">
 		<p>Dashboard</p>
-		<p><a href=""></a>Orders</p>
+		<p><b>Orders</b></p>
 		<p><a href="/show_products">Products</a></p>
 		<p><a href="/logout">Logout</a></p>
 	</div>
@@ -59,10 +59,9 @@
 			<?php foreach($results as $result){ ?>	
 			<tr>
 
-				<td><a href="/show_orders"><?= $result['id'] ?></a></td>
+				<td><a href="/show_orders/<?= $result['id'] ?>"><?= $result['id'] ?></a></td>
 
-				<td><a href="/orders/<?= $result['id'] ?>"</a></td>
-
+				
 				<td><?= $result['first_name'] ?> <?= $result['last_name'] ?></td>
 				<td><?= $result['created_at'] ?></td>
 				<td><?= $result['street_1'] ?>, <?= $result['street_2'] ?>, <?= $result['city'] ?>, <?= $result['state'] ?> <?= $result['zip'] ?></td>

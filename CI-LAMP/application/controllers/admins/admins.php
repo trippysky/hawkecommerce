@@ -9,9 +9,9 @@ class Admins extends CI_Controller {
 
 	public function index()
 	{
-		die('index');
+		
 			
-		$this->load->view('adminLogin');
+		$this->load->view('admins/adminLogin');
 	}
 
 	public function register()
@@ -25,16 +25,16 @@ class Admins extends CI_Controller {
 	{		
 		$this->admin->login($this->input->post());
 
-		if($this->admin->login($this->input->post())){
-			// var_dump($this->session->userdata("id"));
-			// die('logged in');
+		if($this->admin->login($this->input->post()))
+		{
+			
 			// true: user found
 
 			redirect("/orders");
 		}
 		else{
 			// false: user not found
-			redirect("/admins/index");
+			redirect("/admins/admins/index");
 		}
 
 	}
@@ -42,7 +42,7 @@ class Admins extends CI_Controller {
 	public function logout()
 	{
 		// var_dump($this->session->userdata('id'));
-		die('logout');
+		// die('logout');
 		$this->session->sess_destroy();
 		redirect("/admins");
 	}

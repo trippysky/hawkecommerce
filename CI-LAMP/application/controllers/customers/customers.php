@@ -4,7 +4,7 @@ class Customers extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->output->enable_profiler(TRUE);
+		// $this->output->enable_profiler(TRUE);
 		date_default_timezone_set('US/Pacific');
 	}
 

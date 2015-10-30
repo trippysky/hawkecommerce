@@ -10,8 +10,7 @@
 			
 			$query = "SELECT 
 						products.id, products.name, products.inventory, products.qty_sold, products.image, products.active
-						FROM products 
-						WHERE products.active = 1
+						FROM products 				
 						";
 						
 			return $this->db->query($query)->result_array();
@@ -87,6 +86,14 @@
 			// var_dump($id);
 			// die('model');
 			$query = "UPDATE products SET active = 0 WHERE id = $id";
+			$this->db->query($query);
+		}
+
+		public function activate_product($id)
+		{
+			// var_dump($id);
+			// die('model');
+			$query = "UPDATE products SET active = 1 WHERE id = $id";
 			$this->db->query($query);
 		}
 

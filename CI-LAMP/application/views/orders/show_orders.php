@@ -19,22 +19,33 @@
 
 </head>
 <body>
-	<div class="orderInfo">
+
+	<div id="header">
+		<p>Dashboard</p>
+		<p><a href="/orders">Orders</a></p>
+		<p><a href="/show_products">Products</a></p>
+		<p><a href="/logout">Logout</a></p>
+	</div>
 	
-		<h5>Order ID:  <?= $orders['order_id']; ?></h5>
+	<div class="orderInfo">
+	<?php
+	// var_dump($customer_info);
+	// die();
+	?>
+		<h5>Order ID:  <?= $customer_info['order_id']; ?></h5>
 		<h5>Customer shipping info:  </h5>
-		<p>Name:  <?= $orders['customers_first_name'] ; ?> <br>
-		<p>Address:  <?= $orders['street_1'] ; ?><br>
-		<p>City:  <?= $orders['city'] ; ?><br>
-		<p>State: <?= $orders['state'] ; ?> <br>
-		<p>Zip:  <?= $orders['zip'] ; ?></p><br>
+		<p>Name:  <?= $customer_info['first_name'] ."  ". $customer_info['last_name']; ?> <br>
+		<p>Address:  <?= $customer_info['shipping_street1'] ." ". $customer_info['shipping_street2']; ?><br>
+		<p>City:  <?= $customer_info['shipping_city'] ; ?><br>
+		<p>State: <?= $customer_info['shipping_state'] ; ?> <br>
+		<p>Zip:  <?= $customer_info['shipping_zip'] ; ?></p><br>
 
 		<p>Customer billing info:  </p>
-		<p>Name:  <?= $orders['name'] ; ?></p>
-		<p>Address:  <?= $orders['street_1'] ; ?></p>
-		<p>City: <?= $orders['city'] ; ?></p>
-		<p>State:  <?= $orders['state'] ; ?></p>
-		<p>Zip:  <?= $orders['zip'] ; ?></p><br>
+		<p>Name:  <?= $customer_info['first_name'] ." ". $customer_info['last_name']; ?> <br>
+		<p>Address:  <?= $customer_info['billing_street1'] ." ". $customer_info['billing_street2']; ?><br>
+		<p>City:  <?= $customer_info['billing_city'] ; ?><br>
+		<p>State: <?= $customer_info['billing_state'] ; ?> <br>
+		<p>Zip:  <?= $customer_info['billing_zip'] ; ?></p><br>
 
 	</div>
 
@@ -49,31 +60,35 @@
 				<th>Total  </th>
 			</tr>
 
-			<?php foreach $customer_info as $orders) 
-			
+			<?php 
+			$order_sub = 0;
+			foreach ($order_items as $order_item)			
 			{
-			var_dump($orders);
-			die(); ?>
+			$item_total = ($order_item['price'] * $order_item['qty']);
+			$order_sub += $item_total;
+			 ?>
 			<tr>
 
-				<th><?= $orders['id'] ; ?></th>
-				<th><?= $orders['name'] ; ?></th>
-				<th><?= $orders['price'] ; ?></th>
-				<th><?= $orders['inventory'] ; ?></th>
-				<th>product order total</th>
+				<td><?= $order_item['id'] ; ?></td>
+				<td><?= $order_item['name'] ; ?></td>
+				<td>$<?= $order_item['price'] ; ?></td>
+				<td><?= $order_item['qty'] ; ?></td>
+				<td>$<?= $item_total ?></td>
 			</tr>
-			<?php }?>
+			<?php }
+			// die();
+			 ?>
 		</table>
 		
 	</div>
 	<div class="totalBilling">
-		Sub total:  <br>
-		Shipping:  Free<br>
-		Total Price:
+		Sub total: $<?= $order_sub ?><br>
+		Shipping:  $5.00<br>
+		Total Price: $<?= $order_sub +5 ?>
 		
 	</div>
 	<div class="status">
-		Status:  
+		Status: <?= $customer_info['status'] ; ?>
 	</div>
 </body>
 </html>
