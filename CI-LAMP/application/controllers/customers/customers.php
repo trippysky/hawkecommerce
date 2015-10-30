@@ -244,7 +244,7 @@ class Customers extends CI_Controller {
 		// then call create_order
 		$this->customer->create_order($this->input->post(), $cust_id);
 
-		if(!$this->session->flashdata('errors'))
+		if($this->session->flashdata('errors'))
 		{
 			redirect("/cart");
 		}
