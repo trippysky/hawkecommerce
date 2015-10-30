@@ -282,7 +282,7 @@ a{
 		display: inline-block;
 	}
 	.order form.table table input[type="number"]{
-		width: 30px;
+		width: 40px;
 		text-align: center;
 	}
 	.order form.table table input.update{

@@ -30,6 +30,19 @@
 							$('#product').html(output);
 						})
 					)
+
+					$("#title").html($(this).attr("data-name"));
+				});
+
+				$(document).on('change', '.sort', function()
+				{
+					$.post(
+						$(this).attr('action'), 
+						$('#sort').serialize(), function(output)
+						{
+							$('#product').html(output);
+						}, "html"
+					)
 				});
 			});
 		</script>
@@ -67,19 +80,15 @@
 			<div class="products">
 				<div id="header" class="header">
 					<h3 class="alignleft" id="title">
-						<?php if(isset($id) and $id){ ?>
-							<?= $category_list['name'] ?> (page # here)
-						<?php } else { ?>
-							All Products (page # here)
-						<?php } ?>
+						All Products
 					</h3>
 					<p class="alignright"><a href="/">first</a> | <a href="/">prev</a> | <a href="/">2</a> | <a href="/">next</a></p>
 					<div style="clear: both;"></div>
-					<form action="/" method="post" class="alignright">
+					<form id="sort" method="post" class="alignright">
 						<label>Sorted by</label>
-						<select>
+						<select class="sort" action="/popular" name="sort">
 							<option value="Price">Price</option>
-							<option value="Most Popular">Most Popular</option>
+							<option value="Popular">Most Popular</option>
 						</select>
 					</form>
 					<div style="clear: both;"></div>

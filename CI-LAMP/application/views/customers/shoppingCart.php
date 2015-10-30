@@ -12,7 +12,6 @@
 				if($('#checkbox').is(':checked'))
 				{
 					//populate the billing address from the shipping address
-					console.log('same as shipping');
 					$temp = $('input:text[name="first_name"]').val();
 					$('input:text[name="bfirst_name"]').attr("value", $temp);
 					$temp = $('input:text[name="last_name"]').val();
@@ -29,11 +28,20 @@
 					$('input:text[name="bzipcode"]').attr("value", $temp);
 				};
 			});
+
+			$("#qty").on('change', function () {
+				$current = $("#qty").val();
+				$prevData = $("#qty").attr("placeholder");
+				if($current > $prevData || $current < $prevData){
+					$("#qty").attr("value", $current);
+				};
+			});
 		});
 	</script>
 </head>
 <body>
 	<div class="container">
+		<!-- this will become a partial -->
 		<div id="navbar" class="navbar">
 			<h2 class="alignleft">Hawk eCommerce</h2>
 			<p class="alignright">Shopping Cart (
@@ -47,6 +55,7 @@
 		</div>
 		<div style="clear: both;"></div>
 		<div class="order">
+			<!-- this will be a partial -->
 			<form class="table" action="update" method="post">
 				<table>
 					<thead>
@@ -61,15 +70,13 @@
 						<?php if(isset($this->session->userdata['items']) && $this->session->userdata["items"] !== null){
 							$total = 0;
 							foreach($this->session->userdata['items'] as $item)
-							{
-								// var_dump($item['price']);
-							 ?>
+							{ ?>
 								<tr>
 									<td><?= $item['name']; ?></td>
 									<td>$ <?= $item['price']/$item['qty']; ?></td>
 									<td align="center">
 										<input type="hidden" name="id" value="<?= $item['id']; ?>"/>
-										<input type="number" name="qty" min="1" max="3" placeholder="<?= $item['qty']; ?>"/>
+										<input type="number" id="qty" name="qty" min="1" max="10" placeholder="<?= $item['qty']; ?>"/>
 										<input type="submit" class="update" value="update"/>
 										<a href="delete/<?= $item['id'] ?>"><i class="fa fa-trash-o"></i></a></td>
 									<td>$ <?= $item['price']; ?></td>

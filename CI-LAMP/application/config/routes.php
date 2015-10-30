@@ -39,6 +39,7 @@
 */
 $route['orders'] = "orders/orders";
 $route['showall'] = "customers/customers/show_all";
+$route['popular'] = "customers/customers/get_popular";
 $route['update'] = "customers/customers/update";
 $route['delete/(:any)'] = "customers/customers/destroy/$1";
 $route['order/create'] = "customers/customers/create";
