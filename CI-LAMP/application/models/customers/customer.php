@@ -69,7 +69,34 @@ class Customer extends CI_Model {
 
 	public function create_order($post, $cust_id)
 	{
+		// var_dump($post);
+		// die();
 
+			$this->form_validation->set_rules("email", "email", "is_unique[customers.email]|max_length[45]|valid_email|trim|required");
+			$this->form_validation->set_rules("first_name", "shipping first name", "max_length[45]|trim|required");
+			$this->form_validation->set_rules("last_name", "shipping last name", "max_length[45]|trim|required");			
+			$this->form_validation->set_rules("address", "shipping address", "trim|required");
+			$this->form_validation->set_rules("city", "shipping city", "trim|required");
+			$this->form_validation->set_rules("state", "shipping state", "trim|required|max_length[2]");
+			$this->form_validation->set_rules("zipcode", "shipping zipcode", "trim|required");
+			$this->form_validation->set_rules("bfirst_name", " billing first name", "max_length[45]|trim|required");
+			$this->form_validation->set_rules("last_name", "billing last name", "max_length[45]|trim|required");
+			$this->form_validation->set_rules("baddress", "billing address", "trim|required");
+			$this->form_validation->set_rules("bcity", "billing city", "trim|required");
+			$this->form_validation->set_rules("bstate", "billing state", "trim|required");
+			$this->form_validation->set_rules("bzipcode", "billing zipcode", "trim|required");
+			$this->form_validation->set_rules("ccn", "credit card number", "trim|required");
+			$this->form_validation->set_rules("sec_code", "security code", "min_length[3]|max_length[4]|required|trim");
+			
+				
+			if($this->form_validation->run() === FALSE)
+			{
+				
+			    $this->session->set_flashdata('errors', validation_errors());
+
+			}
+			else
+			{
 		// create a customer in the customers table.
 		if($cust_id == null)
 		{
@@ -146,7 +173,7 @@ class Customer extends CI_Model {
 
 			$this->db->query($query, $values);
 		}
-	}
+	}}
 
 	public function current_customer($email)
 	{

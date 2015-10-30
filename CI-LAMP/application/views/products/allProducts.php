@@ -23,7 +23,7 @@
 <body>
 	<div class = "container">
 
-	<div class = "navbar" >
+	<div class = "navbar" id="allprodhead">
 		<h5>Dashboard</h5>
 		<h5><a href="/orders">Orders</a></h5>
 		<h5><b>Products</b></h5>

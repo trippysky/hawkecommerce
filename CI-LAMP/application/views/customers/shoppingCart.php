@@ -91,6 +91,7 @@
 		<div class="customer_info">
 			<div class="shipping">
 				<h3>Shipping Information</h3>
+				<?= $this->session->flashdata('errors') ?>
 				<form action="/order/create" method="post">
 					<p>
 						<label class="space">Email:</label>
@@ -165,7 +166,7 @@
 					</p>
 					<p>
 						<label>Expiration:</label>
-						<input type="number" name="expiration_month" min="01" max="12"/> / <input type="number" name="expiration_year" min="2010" max="2020"/>
+						<input type="number" name="expiration_month" min="01" max="12"/> / <input type="number" name="expiration_year" min="2015" max="2024"/>
 					</p>
 					<p>
 						<label></label>
