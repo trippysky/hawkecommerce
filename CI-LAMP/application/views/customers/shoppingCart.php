@@ -61,7 +61,9 @@
 						<?php if(isset($this->session->userdata['items']) && $this->session->userdata["items"] !== null){
 							$total = 0;
 							foreach($this->session->userdata['items'] as $item)
-							{ ?>
+							{
+								// var_dump($item['price']);
+							 ?>
 								<tr>
 									<td><?= $item['name']; ?></td>
 									<td>$ <?= $item['price']/$item['qty']; ?></td>
